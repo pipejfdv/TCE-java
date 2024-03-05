@@ -102,27 +102,45 @@
                 <div class="Contenedor Testimonios">
                     <h2 class="titulo">Contactenos</h2>
                     <div class="Testimonios_usuarios">
-                        <div class="Testimonio_usuario">
-                            <img src="imagenes/nosotros/andres.png" alt="">
-                            <div class="Contenido_testimonio">
-                                <h4>Andres - Backend</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio, totam?</p>
+                    <div class="container text-center">
+                        <div class="row">
+                          <div class="col">
+                              
+                            <div class="Testimonio_usuario">
+                                <img src="imagenes/nosotros/andres.png" alt="">
+                                <div class="Contenido_testimonio">
+                                    <h4>Desarrollador<br>Backend</h4>
+                                    <p>Andres Felipe Castellanos Vanegas</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="Testimonio_usuario">
+                                  
+                          </div>
+                          <div class="col">
+                            <div class="Testimonio_usuario">
                             <img src="./imagenes/nosotros/luz.png" alt="">
                             <div class="Contenido_testimonio">
-                                <h4>Luz - Backend</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio, totam?</p>
+                                <h4>Desarrolladora<br> Backend</h4>
+                                <p>Luz Adriana Moreno</p>
                             </div>
                         </div>
-                        <div class="Testimonio_usuario">
+                          </div>
+                          <div class="col">
+                            <div class="Testimonio_usuario">
                             <img src="./imagenes/nosotros/juan.png" alt="">
                             <div class="Contenido_testimonio">
-                                <h4>Juan - Frontend</h4>
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Optio, totam?</p>
+                                <h4>Desarrollador<br>Frontend</h4>
+                                <p>Juan Felipe Delgadillo</p>
                             </div>
                         </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    
+                    
+                        
+                        
+                        
                     </div>
                 </div>
             </section>
