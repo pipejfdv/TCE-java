@@ -211,7 +211,6 @@ header .textos-header{
     object-fit: cover;
     border: 3px solid white;
     margin-left: 5px;
-    margin-top: 5px;
     border-radius: 50%;
     display: block;
 }
