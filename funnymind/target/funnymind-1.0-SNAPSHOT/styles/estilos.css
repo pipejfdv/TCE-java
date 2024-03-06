@@ -197,7 +197,7 @@ header .textos-header{
 .Testimonios_usuarios .Testimonio_usuario{
     background: #197657;
     display: flex;
-    width: auto;
+    width: 46%;
     height: 150px;
     align-items: center;
     justify-content: space-evenly;
@@ -210,19 +210,24 @@ header .textos-header{
     height: 100px;
     object-fit: cover;
     border: 3px solid white;
+<<<<<<< HEAD
+<<<<<<< HEAD
     margin-left: 5px;
+=======
+>>>>>>> parent of a1e2a07 (Ajuste boostrap)
+=======
+>>>>>>> parent of a1e2a07 (Ajuste boostrap)
     border-radius: 50%;
     display: block;
 }
 
 .Testimonios_usuarios .Testimonio_usuario > .Contenido_testimonio{
-    width: 70%;
+    width: 60%;
     color: white;
-    padding-top: 5px;
 }
 
 .Testimonios_usuarios .Testimonio_usuario > .Contenido_testimonio p{
-    font-weight: 200;
+    font-weight: 300;
     padding-top: 5px;
 }
 
