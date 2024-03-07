@@ -57,7 +57,22 @@
                 <p>Estadísticas</p>
               </a>
             </li>
-          </ul>      
+          </ul>
+            <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../imagenes/perno-de-tuerca.png" alt="hugenerd" width="10" height="10">
+                        <span class="d-none d-sm-inline mx-1">Ajustes</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>
         </div>
         <section>
             <div class="Contenedor_contenido">

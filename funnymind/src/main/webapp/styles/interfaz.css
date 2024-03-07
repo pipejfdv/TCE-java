@@ -196,89 +196,11 @@ body {
   }
 /*-------------------contenedor de contenido-----------*/
 
-.Contenedor_contenido{
-    position: absolute;
-    width: 95%;
-    height: 100%;
-    margin-left: 68px;
-    margin-right: 70px;
-    background-color: black;
-    z-index: 10;
-}
-
 .Carrusel{
-    position: absolute;
-    width: 80%;
-    height: 300px;
-    margin: 50px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    width: 40%;
+    height: 400px;
 }
-.Contenedor_Principal {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 20px;
-}
-.container {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 20px;
-}
-.row {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-}
-.col {
-flex-basis: 30%;
-flex-grow: 1;
-flex-shrink: 1;
-margin: 10px;
-}
-.bg-black {
-background-color: #333;
-color: #fff;
-}
-.bg-info {
-background-color: #4682b4;
-color: #fff;
-}
-.Titulos {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-bottom: 20px;
-}
-.Titulos h1 {
-font-size: 36px;
-font-weight: bold;
-margin-bottom: 10px;
-}
-.Titulos h2 {
-font-size: 24px;
-font-weight: bold;
-margin-bottom: 10px;
-}
-.Carrusel {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-bottom: 20px;
-}
-.Carrusel .carousel {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-bottom: 20px;
-}
-.Carrusel .carousel-inner {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-bottom: 20px;
-}
-.Carrusel .carousel-item {
-display: flex;
-flex-direction: column;
-align-items: center;
-margin-bottom: 2
