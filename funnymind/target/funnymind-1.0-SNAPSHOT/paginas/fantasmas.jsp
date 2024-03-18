@@ -1,16 +1,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="../styles/fantasmas.css"/>
-        <title>Fantasmas</title>
-    </head>
-    <body>
-        
-    </body>
-    <script src="../js/fantasmas.js"></script>
-</html>
+<head>
+    <title>Juego de Memoria</title>
+    <script src="../Librerias/phaser.js"></script>
+    <link rel="stylesheet" href="../styles/parejas.css" />
+</head>
+<body>
+    <header>
+        <!-- Encabezado del juego -->
+    </header>
+    <div class="container" id="gameContainer"></div>
+    <div id="perdiste" class="perdiste"><span>Fin del Juego Perdiste</span></div>
+    <div id="ganaste" class="ganaste"><span>Felicidades <br> GANASTE!!!</span></div>
 
+    <script src="../js/fantasmas.js"></script>
+</body>
+</html>
