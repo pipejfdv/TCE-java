@@ -1,4 +1,5 @@
-
+create database tce;
+USE tce;
 
 CREATE DATABASE tce;
 USE tce;
