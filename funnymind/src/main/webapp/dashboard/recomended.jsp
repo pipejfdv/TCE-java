@@ -9,7 +9,8 @@
     <title>Dashboard - Funny Mind</title>
     <link rel="stylesheet" href="./css/interfaz.css" />
     <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="stylesheet" href="./css/carrousel.css">
+    <link rel="stylesheet" href="./css/arrow.css">
+    <link rel="stylesheet" href="./css/recomended.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   </head>
 
@@ -56,7 +57,7 @@
                   <span class="text nav-text">Categorias</span>
                 </a>
               </li>
-              
+
               <li class="nav-link">
                 <a href="./stats.jsp">
                   <i class='bx bx-pie-chart-alt icon'></i>
@@ -79,40 +80,38 @@
       </nav>
 
       <div class="recomended-container">
-        <div class="favourites-nav">
 
-          <div class="arrow-container">
-            <a href="home.jsp"><i class='bx bx-left-arrow-alt'>Volver</i></a>
+        <div class="arrow-container">
+          <div class="arrow left left-2">
+            <a href="personalData.jsp"><i class='bx bx-left-arrow-alt'></i>Volver</a>
           </div>
-  
-          <h1>Recomendados</h1>
         </div>
 
+        <h1 class="title">Recomendados</h1>
+
         <div class="games">
-          <h2>Recomendados por tu doctor</h2>
-          <p>
-            Para tu caso en concreto xxxx se te ha recomendado 
-            razonamiento para poder mejor tus habilidades logicas.
-          </p>
+          <div class="text">
+            <h2>Recomendados por tu doctor</h2>
+            <p>
+              Para tu caso en concreto <span class="kid-name"></span> se te ha recomendado
+              razonamiento para poder mejor tus habilidades logicas.
+            </p>
+          </div>
 
           <div class="play">
             <img src="../imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="">
-            <button class="btn">Jugar</button>
+            <div class="btn-container">
+              <button class="btn">Jugar</button>
+            </div>
           </div>
 
         </div>
-        
+
 
       </div>
 
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="./js/app.js"></script>
+    
   </body>
 
   </html>

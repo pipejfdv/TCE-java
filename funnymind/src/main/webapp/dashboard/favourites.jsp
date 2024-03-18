@@ -7,9 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Funny Mind</title>
-    <link rel="stylesheet" href="./css/interfaz.css" />
+    <link rel="stylesheet" href="./css/favourites.css" />
     <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="stylesheet" href="./css/carrousel.css">
+    <link rel="stylesheet" href="./css/arrow.css">
+    <link rel="stylesheet" href="./css/slideFavourites.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   </head>
 
@@ -56,7 +59,7 @@
                   <span class="text nav-text">Categorias</span>
                 </a>
               </li>
-              
+
               <li class="nav-link">
                 <a href="./stats.jsp">
                   <i class='bx bx-pie-chart-alt icon'></i>
@@ -80,49 +83,52 @@
 
       <div class="favourites-container">
 
-        <div class="favourites-nav">
-
-          <div class="arrow-container">
-            <a href="home.jsp"><i class='bx bx-left-arrow-alt'>Volver</i></a>
+        <div class="arrow-container">
+          <div class="arrow left left-2">
+            <a href="home.jsp"><i class='bx bx-left-arrow-alt'></i>Volver</a>
           </div>
-  
-          <h1>Juegos Favoritos</h1>
         </div>
 
-        <div class="carousel-container">
-
-          <div class="carousel">
-            <button class="prev" onclick="prevSlide()">&#10094;</button>
-
-            <img src="../imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="Image 1" class="img">
-            <img src="../imagenes/img1.PNG" alt="Image 2" class="img">
-            <img src="../imagenes/img3.PNG" alt="Image 3" class="img">
-
-            <button class="next" onclick="nextSlide()">&#10095;</button>
+        <h2>Juedos de la semana</h2>
+        <div class="swiper mySwiper" id="container">
+          <div class="swiper-wrapper" id="wrapper">
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/img1.PNG" alt="img 1">
+            </div>
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/img2.PNG" alt="img 2">
+            </div>
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/img3.PNG" alt="img 3">
+            </div>
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="img 2">
+            </div>
           </div>
-  
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-pagination"></div>
         </div>
 
+        <h2>Favoritos</h2>
         <div class="favourites">
 
-          <h1>Favoritos</h1>
-          <img src="../imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="torre_hanoi" class="img">
-          <span><i class='bx bxs-heart'></i></span>
-          
+          <div class="img-container">
+            <img src="../imagenes/img3.PNG" alt="torre_hanoi" class="img">
+            <span class="heart"><i class='bx bxs-heart'></i></span>
+          </div>
+
         </div>
-
       </div>
-
-
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="./js/app.js"></script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="./js/slideFavourites.mjs"></script>
   </body>
 
   </html>

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./css/interfaz.css" />
     <link rel="stylesheet" href="./css/sidebar.css">
     <link rel="stylesheet" href="./css/stats.css">
+    <link rel="stylesheet" href="./css/arrow.css">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   </head>
 
@@ -80,14 +81,13 @@
 
       <div class="stats-container">
 
-        <div class="favourites-nav">
-
-          <div class="arrow-container">
-            <a href="home.jsp"><i class='bx bx-left-arrow-alt'>Volver</i></a>
+        <div class="arrow-container">
+          <div class="arrow left left-2">
+            <a href="personalData.jsp"><i class='bx bx-left-arrow-alt'></i>Volver</a>
           </div>
-  
-          <h1>Estadisticas</h1>
         </div>
+
+        <h1>Estadisticas</h1>
 
         <div class="rachas">
           <div class="exp">
@@ -103,37 +103,43 @@
         </div>
 
         <!--Logica para volverlo dinamico-->
-
-        <div class="logros">
-          <div class="level">
-            <i class='bx bxs-hot'></i>
+        
+        <div class="contenido">
+          <div class="logros-container">
+            <h2>Logros</h2>
+            <div class="logros ">
+              <div class="level bg-red">
+                <i class='bx bxs-hot'></i>
+                <p>Nivel 2</p>
+              </div>
+              <div class="text">
+                <p>Alcanza una racha de 7 dias.</p>
+              </div>
+            </div>
+  
+            <div class="logros">
+              <div class="level bg-purple">
+                <i class='bx bxs-star'></i>
+                <p>Nivel 3</p>
+              </div>
+              <div class="text">
+                <p>Amante de las estrellas, llega las 200 estrellas</p>
+              </div>
+            </div>
           </div>
-          <p>Alcanza una racha de 7 Dias.</p>
-        </div>
-
-        <div class="logros">
-          <div class="level">
-            <i class='bx bxs-star'></i>
+  
+         
+          <div class="graph">
+            <h2>Exp de semana</h2>
+            <canvas id="basicStats"></canvas>
           </div>
-          <p>Amante de las estrellas, llega las 200 estrellas</p>
-        </div>
-
-
-        <div class="graph-1">
-          <canvas id="basicStats"></canvas>
-        </div>
-
-        <div>
-          <canvas id="expStats"></canvas>
         </div>
 
       </div>
 
-
-
     </div>
 
-    <script src="./js/app.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/stats.js"></script>
   </body>

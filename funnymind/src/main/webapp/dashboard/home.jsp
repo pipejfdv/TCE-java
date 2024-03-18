@@ -9,7 +9,9 @@
     <title>Dashboard - Funny Mind</title>
     <link rel="stylesheet" href="./css/interfaz.css" />
     <link rel="stylesheet" href="./css/sidebar.css">
-    <link rel="stylesheet" href="./css/carrousel.css">
+    <link rel="stylesheet" href="./css/slideHome.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
   </head>
 
@@ -56,7 +58,7 @@
                   <span class="text nav-text">Categorias</span>
                 </a>
               </li>
-              
+
               <li class="nav-link">
                 <a href="./stats.jsp">
                   <i class='bx bx-pie-chart-alt icon'></i>
@@ -78,24 +80,42 @@
         </div>
       </nav>
 
-      <div class="carousel-container">
-        <div class="carousel">
-          <button class="prev" onclick="prevSlide()">&#10094;</button>
 
-          <img src="../imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="Image 1" class="img">
-          <img src="../imagenes/img1.PNG" alt="Image 2" class="img">
-          <img src="../imagenes/img3.PNG" alt="Image 3" class="img">
-          
-          <button class="next" onclick="nextSlide()">&#10095;</button>
+
+      <div class="slide-container">
+
+        <div class="welcome">
+          <h1>Bienvenido</h1>
         </div>
 
+        <h2>Categoria de juegos</h2>
+        <div class="swiper mySwiper" id="container">
+          <div class="swiper-wrapper" id="wrapper">
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/img1.PNG" alt="img 1">
+            </div>
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/img2.PNG" alt="img 2">
+            </div>
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/img3.PNG" alt="img 3">
+            </div>
+            <div class="swiper-slide" id="slide">
+              <img src="../imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="img 2">
+            </div>
+          </div>
+
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
-
-
 
     </div>
 
-    <script src="./js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script type="module" src="./js/slideHome.mjs"></script>
   </body>
 
   </html>

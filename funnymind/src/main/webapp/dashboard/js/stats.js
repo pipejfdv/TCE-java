@@ -5,28 +5,7 @@ new Chart(basicStats, {
     data: {
         labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
         datasets: [{
-            label: 'Puntuación',
-            data: [25, 80, 45, 100, 20, 30, 120],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-
-const expStats = document.getElementById('expStats');
-
-new Chart(expStats, {
-    type: 'line',
-    data: {
-        labels: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'],
-        datasets: [{
-            label: 'Puntuación',
+            label: 'Exp',
             data: [25, 80, 45, 100, 20, 30, 120],
             borderWidth: 1
         }]
