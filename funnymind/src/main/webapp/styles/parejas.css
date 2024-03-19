@@ -179,6 +179,6 @@ img {
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;    
-    user-zoom: none;
+    -user-zoom: none;
   }
 
