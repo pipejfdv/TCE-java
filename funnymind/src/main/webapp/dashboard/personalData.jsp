@@ -23,6 +23,7 @@
         <div class="image">
           <img src="../imagenes/ususario.png" alt="Usuario" class="img-user">
         </div>
+        <h3>Camilo Cifuentes</h3>
       </header>
 
       <div class="menu-bar">

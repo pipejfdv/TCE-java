@@ -24,40 +24,41 @@
           <div class="image">
             <img src="../imagenes/ususario.png" alt="Usuario" class="img-user">
           </div>
+          <h3>Camilo Cifuentes</h3>
         </header>
-
+  
         <div class="menu-bar">
           <div class="menu">
             <ul class="menu-links">
-
+  
               <li class="nav-link">
                 <a href="./personalData.jsp">
                   <i class='bx bx-bar-chart-alt-2 icon'></i>
                   <span class="text nav-text">Datos personales</span>
                 </a>
               </li>
-
+  
               <li class="nav-link">
                 <a href="./favourites.jsp">
                   <i class='bx bx-heart icon'></i>
                   <span class="text nav-text">Favoritos</span>
                 </a>
               </li>
-
+  
               <li class="nav-link">
                 <a href="./recomended.jsp">
                   <i class='bx bx-home-alt icon'></i>
                   <span class="text nav-text">Recomendados</span>
                 </a>
               </li>
-
+  
               <li class="nav-link">
                 <a href="./categories.jsp">
                   <i class='bx bx-bell icon'></i>
                   <span class="text nav-text">Categorias</span>
                 </a>
               </li>
-
+  
               <li class="nav-link">
                 <a href="./stats.jsp">
                   <i class='bx bx-pie-chart-alt icon'></i>
