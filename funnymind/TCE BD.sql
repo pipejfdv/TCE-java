@@ -1,9 +1,6 @@
 create database tce;
 USE tce;
 
-CREATE DATABASE tce;
-USE tce;
-
 CREATE TABLE usuarios (
  id INT NOT NULL AUTO_INCREMENT,
  nombre VARCHAR(50) NOT NULL,
