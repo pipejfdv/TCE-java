@@ -27,12 +27,13 @@ body{
 
 /*header*/
 
-.header{
+header{
     width: 100%;
     height: 600px;
-    background: #B2FEFA;  
+    background: #B2FEFA;
+    background-image: url(../imagenes/Portada.jpg);
     /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, hsla(190, 94%, 51%, 0.61), hsla(177, 97%, 85%, 0.61)), url(../imagenes/Portada.jpg);  
+    background: -webkit-linear-gradient(to right, hsla(190, 94%, 51%, 0.61), hsla(177, 97%, 85%, 0.61)), url(../imagenes/Portada.jpg);
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, hsla(190, 94%, 51%, 0.61), hsla(177, 97%, 85%, 0.61)), url(../imagenes/Portada.jpg); 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -45,22 +46,6 @@ body{
     margin-top: 10px;
 }
 
-
-
-header img{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border: 3px solid white;
-    border-radius: 50%;
-    display: block;
-    float:left;
-    left: 10px;
-    right: 30px;
-    position: relative;
-    left: 100px;
-    right: 10px;
-}
 header .textos-header{
     display: flex;
     height: 430px;
