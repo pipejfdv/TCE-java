@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Sesiones.java
 C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EjerciciosAsignadosFacade.java
 C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\AfiliacionesEps.java
@@ -24,3 +25,30 @@ C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\ja
 C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Ejercicios.java
 C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\AfiliacionesEpsFacadeLocal.java
 C:\Users\Juamp\OneDrive\Desktop\Repositorios\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\UsuariosFacade.java
+=======
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EjerciciosFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\AbstractFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\SesionesFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Ejercicios.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EspecialidadFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EspecialidadFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\TerapeutasFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EjerciciosAsignadosFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\AfiliacionesEps.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\PacientesFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Terapeutas.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Especialidad.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Pacientes.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\UsuariosFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EjerciciosFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\SesionesFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\UsuariosFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\EjerciciosAsignadosFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\TerapeutasFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Usuarios.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\EjerciciosAsignados.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\AfiliacionesEpsFacade.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\PacientesFacadeLocal.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\entidades\Sesiones.java
+C:\Users\fcast\Documents\GitHub\TCE-java\Funny_Mind_JSF\src\main\java\com\mycompany\funny_mind_jsf\modelo\AfiliacionesEpsFacadeLocal.java
+>>>>>>> c20c4daed00c58168dd3e88edbabe062ec2a7ad9
