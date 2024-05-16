@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <!-- boostrap -->
@@ -26,8 +27,8 @@
             <div class="row">
                 <div class="d-flex justify-content-center">
                     <h:form class="mt-3">
-                        <input type="text" class="form-control mb-2" placeholder="Nombres" name="nombre" required="Ingresa tu nombre"/>
-                        <input type="text" class="form-control mb-2" placeholder="Apellidos" name="apellido"/>
+                        <h:inputText value="#{controlar_Registro.user.nombre}" title="nombre" class="form-control mb-2" required="Ingresa tu nombre"/>
+                        <h:inputText value="#{controlar_Registro.user.apellido}" title="apellido" class="form-control mb-2" required="Ingresa tu apellido"/>
                         <h6>Fecha de nacimiento</h6>
                         <input type="date" name="fecha" class="fecha mb-2" required=""/>
                         <div class="row mt-2 mb-2">
@@ -36,15 +37,15 @@
                             </div>
                             <div class="col col-sm-8">
                                 <select name="genero" class="form-select">
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Femenino">Femenino</option>
+                                    <f:selectItem itemValue="Masculino" itemLabel="Masculino"></f:selectItem>
+                                    <f:selectItem itemValue="Femenimo" itemLabel="Femenino"></f:selectItem>
                                 </select>
                             </div>
                         </div>
-                        <input type="email" class="form-control mb-2" placeholder="Correo" name="correo" required="No es un correo valido"/>
-                        <input type="password" class="form-control mb-2" placeholder="Asignar contraseña" name="contrasena" required="Contraseña no valida"/>
-                        <input type="password" class="form-control mb-2" placeholder="Confirmar contraseña" name="contrasena2" required="Contraseña no valida"/>
-                        <button type="submit" name="registrarse" class="btn btn-primary mb-5">Registrar</button>
+                        <h:inputText value="#{controlar_Registro.user.correo}" title="correo" class="form-control mb-2" required="No es un correo valido"/>
+                        <h:inputSecret value="#{controlar_Registro.user.contrasena}" title="contrasena" class="form-control mb-2" required="Contraseña no valida"/>
+                        <h:inputSecret title="contrasena" class="form-control mb-2" required="Contraseña no valida"/>
+                        <h:commandButton value="Registrar" action="#{controlar_Registro.registro_Usuario()}" class="btn btn-primary mb-5"></h:commandButton>
                     </h:form>
                 </div>
             </div>
