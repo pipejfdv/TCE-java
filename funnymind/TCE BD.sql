@@ -3,7 +3,7 @@ DROP DATABASE IF EXISTS tce;
 CREATE DATABASE tce;
 USE tce;
 
---tabla de generos
+-- tabla de generos
 CREATE TABLE generos(
     id int not null primary key,
     genero varchar (50) not null
@@ -72,7 +72,6 @@ CREATE TABLE juegos_asignados (
     juegos_id INT NOT NULL,
     fecha_asignacion DATE NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (gravedad_id) REFERENCES gravedad(id),
     FOREIGN KEY (juegos_id) REFERENCES juegos(id)
 );
 
