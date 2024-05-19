@@ -3,6 +3,11 @@ DROP DATABASE IF EXISTS tce;
 CREATE DATABASE tce;
 USE tce;
 
+--tabla de generos
+CREATE TABLE generos(
+    id int not null primary key,
+    genero varchar (50) not null
+);
 -- Tabla de usuarios
 CREATE TABLE usuarios (
     id INT NOT NULL AUTO_INCREMENT,
@@ -11,11 +16,12 @@ CREATE TABLE usuarios (
     primer_apellido VARCHAR(50) NOT NULL,
     segundo_apellido VARCHAR(50) NULL,
     fecha_nacimiento DATE NOT NULL,
-    genero ENUM('Masculino', 'Femenino') NOT NULL,
+    genero_id int NOT NULL,
     correo VARCHAR(100) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (genero_id) REFERENCES generos(id)
 );
 
 -- Tabla de perfil terapeuta
@@ -27,10 +33,11 @@ CREATE TABLE perfil_terapeuta (
     segundo_apellido VARCHAR(50) NULL,
     especialidad_id INT NOT NULL,
     fecha_nacimiento DATE,
-    genero ENUM('Masculino', 'Femenino') NOT NULL,
+    genero_id int NOT NULL,
     correo VARCHAR(100) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
-    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (genero_id) REFERENCES generos(id)
 );
 
 -- Tabla de especialidad del doctor
@@ -62,7 +69,6 @@ CREATE TABLE categoria_juegos (
 -- Tabla de juegos asignados
 CREATE TABLE juegos_asignados (
     id INT NOT NULL AUTO_INCREMENT,
-    gravedad_id INT NOT NULL,
     juegos_id INT NOT NULL,
     fecha_asignacion DATE NOT NULL,
     PRIMARY KEY (id),
