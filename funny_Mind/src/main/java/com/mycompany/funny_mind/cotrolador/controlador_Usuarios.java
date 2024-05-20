@@ -4,12 +4,19 @@
  */
 package com.mycompany.funny_mind.cotrolador;
 
+import com.mycompany.funny_mind.entidades.Avance;
 import com.mycompany.funny_mind.entidades.Generos;
+import com.mycompany.funny_mind.entidades.PuntajesActividades;
+import com.mycompany.funny_mind.entidades.Sesiones;
 import com.mycompany.funny_mind.entidades.Usuarios;
+import com.mycompany.funny_mind.modelo.AvanceFacadeLocal;
 import com.mycompany.funny_mind.modelo.GenerosFacadeLocal;
+import com.mycompany.funny_mind.modelo.PuntajesActividadesFacadeLocal;
+import com.mycompany.funny_mind.modelo.SesionesFacadeLocal;
 import com.mycompany.funny_mind.modelo.UsuariosFacadeLocal;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import com.sun.javafx.scene.control.skin.VirtualFlow.ArrayLinkedList;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -35,7 +42,13 @@ FacesMessage mensaje;
 UsuariosFacadeLocal ufl;
 @EJB
 GenerosFacadeLocal sfl;
-List<SelectItem> lista_Generos = new ArrayLinkedList<>();
+@EJB
+AvanceFacadeLocal afl;
+@EJB
+SesionesFacadeLocal sesionesfl;
+@EJB
+PuntajesActividadesFacadeLocal pfl;
+List<SelectItem> lista_Generos = new ArrayList<>();
     public controlador_Usuarios() {
     }
 
@@ -55,6 +68,8 @@ List<SelectItem> lista_Generos = new ArrayLinkedList<>();
         this.sex = sex;
     }
 
+    
+    
     public List<SelectItem> getLista_Generos() {
         try {
             for(Generos sexo : this.sfl.findAll()){
@@ -76,8 +91,13 @@ List<SelectItem> lista_Generos = new ArrayLinkedList<>();
         Contexto = FacesContext.getCurrentInstance();
         try {
             /*agregar genero*/
+            this.user.setPuntajesActividadesList(new ArrayList<PuntajesActividades>());
+            this.user.setSesionesList(new ArrayLinkedList<Sesiones>());
+            this.user.setAvanceList(new ArrayList<Avance>());
             this.user.setGeneroId(sex);
+            this.user.setFechaRegistro(new Date());
             this.ufl.create(user);
+            
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "MSG_INFO");
         } catch (Exception e) {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se completo el registro", "MSG_ERROR");
