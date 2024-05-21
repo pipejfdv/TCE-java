@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* estilo y transición de los botones */
+#elegir{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(to right, rgb(66, 196, 152), rgb(92, 159, 226));
+    border-radius: 30px;
+    transition: 0.8s;
+}
+/* boton de ingreso */
+.desliz-btn1{
+    
+    padding: 10px 22px;
+    cursor: pointer;
+    background: transparent;
+    border: 0px;
+    outline: none;
+    position: relative;
+}
+/* boton de registro */
+.desliz-btn2{
+    padding: 10px 22px;
+    cursor: pointer;
+    background: transparent;
+    border: 0px;
+    outline: none;
+    position: relative;
+}
+/* contiene los botones */
+.boton_formulario{
+    width: 240px;
+    margin: 30px auto;
+    /* margin: 20px auto 30px auto; */
+    position: relative;
+}
+/* Estilo de boton y envio de formulario */
+.validar{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, rgb(66, 196, 152), rgb(92, 159, 226));
+    border: 0px;
+    outline: none;
+    border-radius: 30px;
+}
+/*tamaño frame en ingreso*/
+.tamano_Original{
+    height: 250px
+}
+/*tamaño frame en cambio a registro*/
+.tamano{
+    height: 447px;
+    
+}
+.tamanoContenido{
+    height: 555px;
+}
+.linea{
+    border-bottom: 3px solid #318B48;
+}
