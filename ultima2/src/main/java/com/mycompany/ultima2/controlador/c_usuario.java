@@ -8,13 +8,12 @@ import com.mycompany.ultima2.entidades.Generos;
 import com.mycompany.ultima2.entidades.Usuarios;
 import com.mycompany.ultima2.modelo.GenerosFacadeLocal;
 import com.mycompany.ultima2.modelo.UsuariosFacadeLocal;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -39,6 +38,11 @@ GenerosFacadeLocal sfl;
 List<SelectItem> lista_Generos = new ArrayList<>();
     public c_usuario() {
     }
+    
+      @PostConstruct
+    public void init() {
+        lista_Generos = new ArrayList<>();
+    }
 
     public Usuarios getUser() {
         return user;
@@ -56,17 +60,18 @@ List<SelectItem> lista_Generos = new ArrayList<>();
         this.sex = sex;
     }
 
-    public List<SelectItem> getLista_Generos() {
-        try {
-            for(Generos sexo : this.sfl.findAll()){
-                SelectItem item = new SelectItem(sexo.getId(), sexo.getGenero());
-                this.lista_Generos.add(item);
+     public List<SelectItem> getLista_Generos() {
+        if (lista_Generos.isEmpty()) {
+            try {
+                for (Generos sexo : sfl.findAll()) {
+                    SelectItem item = new SelectItem(sexo.getId(), sexo.getGenero());
+                    lista_Generos.add(item);
+                }
+            } catch (Exception e) {
+                System.out.println(e.toString());
             }
-            return this.lista_Generos;
-        } catch (Exception e) {
-            System.out.println(e.toString());
         }
-        return null;
+        return lista_Generos;
     }
 
     public void setLista_Generos(List<SelectItem> lista_Generos) {
