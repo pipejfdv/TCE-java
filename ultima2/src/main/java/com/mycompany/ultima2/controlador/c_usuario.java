@@ -28,18 +28,19 @@ import javax.faces.model.SelectItem;
 public class c_usuario implements Serializable {
 
     Usuarios user = new Usuarios();
-Generos sex = new Generos();
-FacesContext Contexto;
-FacesMessage mensaje;
-@EJB
-UsuariosFacadeLocal ufl;
-@EJB
-GenerosFacadeLocal sfl;
-List<SelectItem> lista_Generos = new ArrayList<>();
+    Generos sex = new Generos();
+    FacesContext Contexto;
+    FacesMessage mensaje;
+    @EJB
+    UsuariosFacadeLocal ufl;
+    @EJB
+    GenerosFacadeLocal sfl;
+    List<SelectItem> lista_Generos = new ArrayList<>();
+
     public c_usuario() {
     }
-    
-      @PostConstruct
+
+    @PostConstruct
     public void init() {
         lista_Generos = new ArrayList<>();
     }
@@ -60,7 +61,7 @@ List<SelectItem> lista_Generos = new ArrayList<>();
         this.sex = sex;
     }
 
-     public List<SelectItem> getLista_Generos() {
+    public List<SelectItem> getLista_Generos() {
         if (lista_Generos.isEmpty()) {
             try {
                 for (Generos sexo : sfl.findAll()) {
@@ -77,28 +78,29 @@ List<SelectItem> lista_Generos = new ArrayList<>();
     public void setLista_Generos(List<SelectItem> lista_Generos) {
         this.lista_Generos = lista_Generos;
     }
-    
-     public void crear_Usuario(){
+
+    public void crear_Usuario() {
         Contexto = FacesContext.getCurrentInstance();
         try {
             /*agregar genero*/
-            
+
             this.user.setGeneroId(sex);
-            
+
             this.ufl.create(user);
-            
+
             mensaje = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "MSG_INFO");
         } catch (Exception e) {
             mensaje = new FacesMessage(FacesMessage.SEVERITY_ERROR, "No se completo el registro", "MSG_ERROR");
         }
         Contexto.addMessage(null, mensaje);
     }
-    
-     public List<Generos> lista(){
+
+    public List<Generos> lista() {
         try {
             return this.sfl.findAll();
         } catch (Exception e) {
         }
         return null;
     }
+
 }

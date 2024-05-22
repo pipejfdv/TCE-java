@@ -8,6 +8,7 @@ import com.mycompany.ultima2.entidades.Usuarios;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -29,3 +30,4 @@ public class UsuariosFacade extends AbstractFacade<Usuarios> implements Usuarios
     }
     
 }
+    

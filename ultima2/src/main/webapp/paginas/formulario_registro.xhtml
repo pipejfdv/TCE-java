@@ -43,7 +43,7 @@
                                 <h:outputLabel value="Correo:" for="correo" />
                                 <h:inputText id="correo" value="#{c_usuario.user.correo}" title="Correo" required="true" requiredMessage="The Correo field is required."/>
                                 <h:outputLabel value="Contraseña:" for="contrasena" />
-                                <h:inputText id="contrasena" value="#{c_usuario.user.contrasena}" title="Contrasena" required="true" requiredMessage="The Contrasena field is required."/>
+                                <h:inputSecret id="contrasena" value="#{c_usuario.user.contrasena}" title="Contrasena" required="true" requiredMessage="The Contrasena field is required."/>
                                 <h:outputLabel value="Genero:" for="generoId" />
                                 <h:selectOneMenu id="generoId" value="#{c_usuario.sex.id}" title="GeneroId" required="true" requiredMessage="The GeneroId field is required.">
                                     <!-- TODO: update below reference to list of available items-->
@@ -58,5 +58,6 @@
                 </div>
             </div>
         </div>
+        
     </h:body>
 </html>
