@@ -3,108 +3,103 @@ DROP DATABASE IF EXISTS tce;
 CREATE DATABASE tce;
 USE tce;
 
+-- tabla de roles
+CREATE TABLE roles(
+    id_rol int not null primary key,
+    rol varchar (30) not null
+);
+
 -- tabla de generos
 CREATE TABLE generos(
-    id int not null primary key,
+    id_genero int not null primary key,
     genero varchar (50) not null
 );
+
+-- Tabla de especialidad del doctor
+CREATE TABLE especialidad (
+    id_especialidad INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50)
+);
+
 -- Tabla de usuarios
 CREATE TABLE usuarios (
-    id INT NOT NULL AUTO_INCREMENT,
+    id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     primer_nombre VARCHAR(50) NOT NULL,
     segundo_nombre VARCHAR(50) NULL,
     primer_apellido VARCHAR(50) NOT NULL,
     segundo_apellido VARCHAR(50) NULL,
     fecha_nacimiento DATE NOT NULL,
     genero_id int NOT NULL,
+    id_rol int not null,
     correo VARCHAR(100) NOT NULL,
     contrasena VARCHAR(255) NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id),
-    FOREIGN KEY (genero_id) REFERENCES generos(id)
-);
-
--- Tabla de perfil terapeuta
-CREATE TABLE perfil_terapeuta (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    primer_nombre VARCHAR(50) NOT NULL,
-    segundo_nombre VARCHAR(50) NULL,
-    primer_apellido VARCHAR(50) NOT NULL,
-    segundo_apellido VARCHAR(50) NULL,
-    especialidad_id INT NOT NULL,
-    fecha_nacimiento DATE,
-    genero_id int NOT NULL,
-    correo VARCHAR(100) NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
-    fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (genero_id) REFERENCES generos(id)
-);
-
--- Tabla de especialidad del doctor
-CREATE TABLE especialidad (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50),
-    terapeuta_id INT NOT NULL,
-    FOREIGN KEY (terapeuta_id) REFERENCES perfil_terapeuta(id)
-);
-
--- Tabla de juegos
-CREATE TABLE juegos (
-    id INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL,
-    descripcion TEXT,
-    fecha_creacion DATE NOT NULL,
-    fecha_modificacion TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (id)
+    id_especialidad int null,
+    FOREIGN KEY (genero_id) REFERENCES generos(id_genero),
+    FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
+    FOREIGN KEY (id_especialidad) REFERENCES especialidad(id_especialidad)
 );
 
 -- Tabla de categoría de juegos
 CREATE TABLE categoria_juegos (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    categoria ENUM ('Memoria', 'Atención', 'Lógica'),
-    juegos_id INT NOT NULL,
-    FOREIGN KEY (juegos_id) REFERENCES juegos(id)
+    id_categoriaJuego INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    categoria varchar(50) not null
+);
+
+-- Tabla de juegos
+CREATE TABLE juegos (
+    id_juego INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    id_categoriaJuego int not null,
+    foreign key (id_categoriaJuego) references categoria_juegos (id_categoriaJuego)
 );
 
 -- Tabla de juegos asignados
 CREATE TABLE juegos_asignados (
-    id INT NOT NULL AUTO_INCREMENT,
-    juegos_id INT NOT NULL,
+    id_asignacion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_juego INT NOT NULL,
     fecha_asignacion DATE NOT NULL,
-    PRIMARY KEY (id),
-    FOREIGN KEY (juegos_id) REFERENCES juegos(id)
+    id_paciente int not null,
+    id_especialista int not null,
+    FOREIGN KEY (id_paciente) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_especialista) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_juego) REFERENCES juegos(id_juego)
 );
 
--- Tabla de avance
+-- Tabla de avance historia clinica
 CREATE TABLE avance (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    descripcion VARCHAR(255),
-    usuario_id INT,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+    id_avance INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    avance text,
+    id_paciente int not null,
+    id_especialista int not null,
+    FOREIGN KEY (id_paciente) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_especialista) REFERENCES usuarios(id_usuario)
 );
 
 -- Tabla de sesiones
 CREATE TABLE sesiones (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    perfil_terapeuta_id INT NOT NULL,
-    fecha_sesion DATETIME NOT NULL,
-    duracion INT NOT NULL,
-    avance_id INT,
-    FOREIGN KEY (avance_id) REFERENCES avance(id),
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (perfil_terapeuta_id) REFERENCES perfil_terapeuta(id)
+    id_sesion INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    id_paciente int not null,
+    id_especialista int not null,
+    fecha_sesion date NOT NULL,
+    id_avance INT,
+    info text, -- información de duración 
+    FOREIGN KEY (id_avance) REFERENCES avance(id_avance),
+    FOREIGN KEY (id_paciente) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_especialista) REFERENCES usuarios(id_usuario)
 );
 
 -- Tabla de puntajes de actividades
 CREATE TABLE puntajes_actividades (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    juegos_id INT NOT NULL,
-    categoria_id INT NOT NULL,
+    id_puntaje INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    id_usuario INT NOT NULL,
+    id_juego INT NOT NULL,
+    id_categoria INT NOT NULL,
     fecha_realizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    puntaje INT NULL,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id),
-    FOREIGN KEY (categoria_id) REFERENCES categoria_juegos(id),
-    FOREIGN KEY (juegos_id) REFERENCES juegos(id)
+    puntaje_juego INT not NULL default 0,
+    puntaje_categoria INT not NULL default 0,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (id_categoria) REFERENCES categoria_juegos(id_categoriaJuego),
+    FOREIGN KEY (id_juego) REFERENCES juegos(id_juego)
 );
