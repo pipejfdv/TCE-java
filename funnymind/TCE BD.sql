@@ -106,17 +106,17 @@ CREATE TABLE puntajes_actividades (
 
 -- Inserción de datos
 -- tabla generos
-INSERT into generos (id_genero, genero) VALUES (0,'Maculino');
-INSERT into generos (id_genero, genero) VALUES (1,'Femenino');
+INSERT into generos (id_genero, genero) VALUES (1,'Maculino');
+INSERT into generos (id_genero, genero) VALUES (2,'Femenino');
 
 -- tabla rol
-INSERT into roles (id_rol, rol) VALUES (0,'Usuario');
-INSERT into roles (id_rol, rol) VALUES (1,'Paciente');
-INSERT into roles (id_rol, rol) VALUES (2,'Terapeuta');
-INSERT into roles (id_rol, rol) VALUES (3,'Administrador');
+INSERT into roles (id_rol, rol) VALUES (1,'Usuario');
+INSERT into roles (id_rol, rol) VALUES (2,'Paciente');
+INSERT into roles (id_rol, rol) VALUES (3,'Terapeuta');
+INSERT into roles (id_rol, rol) VALUES (4,'Administrador');
 
 -- tabla especialidad
-INSERT into especialidad (id_especialidad, nombre) VALUES (0,'ninguna');
-INSERT into especialidad (id_especialidad, nombre) VALUES (1,'Neuropsicologo');
-INSERT into especialidad (id_especialidad, nombre) VALUES (2,'Neurologo');
-INSERT into especialidad (id_especialidad, nombre) VALUES (3,'psicólogo clinico');
+INSERT into especialidad (id_especialidad, nombre) VALUES (1,'ninguna');
+INSERT into especialidad (id_especialidad, nombre) VALUES (2,'Neuropsicologo');
+INSERT into especialidad (id_especialidad, nombre) VALUES (3,'Neurologo');
+INSERT into especialidad (id_especialidad, nombre) VALUES (4,'psicólogo clinico');
