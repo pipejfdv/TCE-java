@@ -103,3 +103,20 @@ CREATE TABLE puntajes_actividades (
     FOREIGN KEY (id_categoria) REFERENCES categoria_juegos(id_categoriaJuego),
     FOREIGN KEY (id_juego) REFERENCES juegos(id_juego)
 );
+
+-- Inserción de datos
+-- tabla generos
+INSERT into generos (id_genero, genero) VALUES (0,'Maculino');
+INSERT into generos (id_genero, genero) VALUES (1,'Femenino');
+
+-- tabla rol
+INSERT into roles (id_rol, rol) VALUES (0,'Usuario');
+INSERT into roles (id_rol, rol) VALUES (1,'Paciente');
+INSERT into roles (id_rol, rol) VALUES (2,'Terapeuta');
+INSERT into roles (id_rol, rol) VALUES (3,'Administrador');
+
+-- tabla especialidad
+INSERT into especialidad (id_especialidad, nombre) VALUES (0,'ninguna');
+INSERT into especialidad (id_especialidad, nombre) VALUES (1,'Neuropsicologo');
+INSERT into especialidad (id_especialidad, nombre) VALUES (2,'Neurologo');
+INSERT into especialidad (id_especialidad, nombre) VALUES (3,'psicólogo clinico');
