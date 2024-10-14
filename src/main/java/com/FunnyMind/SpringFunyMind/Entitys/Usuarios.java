@@ -2,7 +2,9 @@ package com.FunnyMind.SpringFunyMind.Entitys;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -27,14 +29,16 @@ public class Usuarios {
     @NotBlank
     private String primer_apellido;
     private String segundo_apellido;
-    @NotBlank
+    @NotNull
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate fecha_nacimiento;
     private int genero_id;
     //valor por defecto de usuario en su registro
     private int id_rol = 1;
     private String correo;
     private String contrasena;
-    @Column(name = "fecha_registro", nullable = false, updatable = false)
+    //se aplica en insertable para que no lo tome en el registro
+    @Column(name = "fecha_registro", nullable = false, updatable = false, insertable = false)
     private Timestamp fecha_registro;
     //valor por defecto de usuario en su registro
     private int id_especialidad = 1;
