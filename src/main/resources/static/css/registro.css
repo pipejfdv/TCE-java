@@ -61,7 +61,7 @@ nav > a{
 }
 /* amplicación de bloque_formulario para el registro*/
 .ampliar{
-    height: 100%;
+    height: 630px;
 }
 /* contiene los botones */
 .boton_formulario{
@@ -141,14 +141,6 @@ form img{
     bottom: 64px;
     position: absolute;
 }
-/* texto del segundo check */
-.check_L2{
-    color: #000000;
-    font-size: 12px;
-    bottom: 64px;
-    position: absolute;
-    left: 30PX;
-}
 
 /* Estilo de boton y envio de formulario */
 .validar{
@@ -169,5 +161,8 @@ form img{
 /* identificación del segundo formulario llamado registro */
 #Registrarme{
     left: 450px;
-
+}
+/* justificar contenido*/
+.justificar p{
+    justify-content: center;
 }

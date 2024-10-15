@@ -35,7 +35,9 @@ public class Usuarios {
     private int genero_id;
     //valor por defecto de usuario en su registro
     private int id_rol = 1;
+    @NotBlank
     private String correo;
+    @NotBlank
     private String contrasena;
     //se aplica en insertable para que no lo tome en el registro
     @Column(name = "fecha_registro", nullable = false, updatable = false, insertable = false)

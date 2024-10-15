@@ -17,8 +17,8 @@
 
 </header>
 <main>
-    <div class="Contenedor_Registro ">
-        <div class="bloque_formulario ">
+    <div class="Contenedor_Registro">
+        <div class="bloque_formulario">
             <div class="boton_formulario">
                 <div id="elegir"></div>
                 <button type="button" class="desliz-btn1" onclick="Login()" id="control1">Ingresar</button>
@@ -38,11 +38,17 @@
                 </form>
                 <form th:action="@{/registrar}" method="post" class="formulario" id="Registrarme" th:object="${usuario}">
                     <input type="text" name="primer_nombre" th:field="*{primer_nombre}" placeholder="Primer nombre" class="Users" >
+                    <!-- fields detecta el error, que el error se validara en el campo errors "primer_nombre" -->
+                    <span th:if="${#fields.hasErrors('primer_nombre')}" th:errors="*{primer_nombre}">Falta tu primer nombre</span>
                     <input type="text" name="segundo_nombre" th:field="*{segundo_nombre}" placeholder="Segundo nombre" class="Users" >
                     <input type="text" name="primer_apellido" th:field="*{primer_apellido}" placeholder="Primer apellido" class="Users" >
+                    <!-- validar campo "primer_apellido" -->
+                    <span th:if="${#fields.hasErrors('primer_apellido')}" th:errors="*{primer_apellido}">Falta tu primer apellido</span>
                     <input type="text" name="segundo_apellido" th:field="*{segundo_apellido}" placeholder="Segundo apellido" class="Users" >
-                    <!--Se debe validar el registro -->
+                    <!--Se agrega validación -->
                     <input type="date" name="fecha_nacimiento" th:field="*{fecha_nacimiento}" placeholder="dd/MM/yyyy" class="Users" >
+                    <span th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}">No has ingresado la fecha</span>
+                    <br>
                     <label>Genero</label>
                     <!--Se asigna el id de genero en el registro del usuario -->
                     <select th:field="*{genero_id}" name="genero">
@@ -50,14 +56,42 @@
                         <option th:each="genero : ${generos}" th:value="${genero.id_genero}" th:text="${genero.genero}"></option>
                     </select>
                     <input type="email" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
+                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Falta el correo</span>
                     <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Asignar contraseña" class="Users">
+                    <span th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}">Falta tu contraseña</span>
 
-
-                    <label class="check_L2">Acepto los terminos y Condiciones.</label>
-                    <div class="TyC">
-                        <input type="checkbox" class="check">
+                    <div class="row">
+                        <div class="col col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="flexCheckDefault" required>
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    <a data-bs-toggle="modal" data-bs-target="#TyC">Acepto los términos y condiciones.</a>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- contenido de terminos y condicones -->
+                        <!-- Modal -->
+                        <div class="modal fade" id="TyC" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Términos y Condiciones</h1>
+                                    </div>
+                                    <div class="modal-body justificar">
+                                        <p>Bienvenido a Funny Mind. Al acceder y utilizar nuestro sitio web, aceptas cumplir con los siguientes términos y condiciones. Si no estás de acuerdo con alguna parte de estos términos, no debes utilizar nuestro sitio web.</p><br>
+                                        <p>El contenido de las páginas de este sitio web es para tu información y uso general. Está sujeto a cambios sin previo aviso.</p><br>
+                                        <p>Nos comprometemos a proteger tu privacidad. Consulta nuestra <strong>Política de Privacidad</strong> para obtener más información sobre cómo recopilamos y utilizamos tus datos personales.</p><br>
+                                        <p>Todo el contenido incluido en este sitio web, como texto, gráficos, logotipos, imágenes y software, es propiedad de Funny Mind o de sus proveedores de contenido y está protegido por las leyes de propiedad intelectual.</p><br>
+                                        <p>El uso de cualquier información o material en este sitio web es bajo tu propio riesgo, por lo cual no seremos responsables. Será tu responsabilidad asegurarte de que cualquier producto, servicio o información disponible a través de este sitio web cumpla con tus requisitos específicos.</p><br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Entiendo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" name="registrarse" class="validar">Registrar</button>
+                    <button type="submit" name="registrarse" class="validar mb-3">Registrar</button>
                 </form>
             </div>
         </div>
