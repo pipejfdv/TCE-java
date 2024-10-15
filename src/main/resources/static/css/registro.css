@@ -166,3 +166,7 @@ form img{
 .justificar p{
     justify-content: center;
 }
+/*errores form*/
+.error{
+    color: #f83f2f;
+}

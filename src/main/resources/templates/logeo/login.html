@@ -6,7 +6,7 @@
     <link rel="icon" href="/imagenes/Logo.ico">
     <!--boostrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>logeo Funny Mind</title>
+    <title>Funny Mind</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
 
 </header>
 <main>
-    <div class="Contenedor_Registro">
+    <div class="Contenedor_Registro overflow-auto">
         <div class="bloque_formulario">
             <div class="boton_formulario">
                 <div id="elegir"></div>
@@ -39,15 +39,15 @@
                 <form th:action="@{/registrar}" method="post" class="formulario" id="Registrarme" th:object="${usuario}">
                     <input type="text" name="primer_nombre" th:field="*{primer_nombre}" placeholder="Primer nombre" class="Users" >
                     <!-- fields detecta el error, que el error se validara en el campo errors "primer_nombre" -->
-                    <span th:if="${#fields.hasErrors('primer_nombre')}" th:errors="*{primer_nombre}">Falta tu primer nombre</span>
+                    <span class="error" th:if="${#fields.hasErrors('primer_nombre')}" th:errors="*{primer_nombre}" ></span>
                     <input type="text" name="segundo_nombre" th:field="*{segundo_nombre}" placeholder="Segundo nombre" class="Users" >
                     <input type="text" name="primer_apellido" th:field="*{primer_apellido}" placeholder="Primer apellido" class="Users" >
                     <!-- validar campo "primer_apellido" -->
-                    <span th:if="${#fields.hasErrors('primer_apellido')}" th:errors="*{primer_apellido}">Falta tu primer apellido</span>
+                    <span class="error" th:if="${#fields.hasErrors('primer_apellido')}" th:errors="*{primer_apellido}"></span>
                     <input type="text" name="segundo_apellido" th:field="*{segundo_apellido}" placeholder="Segundo apellido" class="Users" >
                     <!--Se agrega validación -->
                     <input type="date" name="fecha_nacimiento" th:field="*{fecha_nacimiento}" placeholder="dd/MM/yyyy" class="Users" >
-                    <span th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}">No has ingresado la fecha</span>
+                    <span class="error" th:if="${#fields.hasErrors('fecha_nacimiento')}" th:errors="*{fecha_nacimiento}"></span>
                     <br>
                     <label>Genero</label>
                     <!--Se asigna el id de genero en el registro del usuario -->
@@ -55,10 +55,10 @@
                         <!--Se crea una lista generos donde la variable genero recorre el arreglo -->
                         <option th:each="genero : ${generos}" th:value="${genero.id_genero}" th:text="${genero.genero}"></option>
                     </select>
-                    <input type="email" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
-                    <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}">Falta el correo</span>
+                    <input type="text" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
+                    <span class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></span>
                     <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Asignar contraseña" class="Users">
-                    <span th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}">Falta tu contraseña</span>
+                    <span class="error" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></span>
 
                     <div class="row">
                         <div class="col col-12">

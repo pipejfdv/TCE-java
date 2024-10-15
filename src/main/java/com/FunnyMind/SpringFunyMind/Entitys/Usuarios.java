@@ -1,6 +1,7 @@
 package com.FunnyMind.SpringFunyMind.Entitys;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -36,6 +37,7 @@ public class Usuarios {
     //valor por defecto de usuario en su registro
     private int id_rol = 1;
     @NotBlank
+    @Email
     private String correo;
     @NotBlank
     private String contrasena;
