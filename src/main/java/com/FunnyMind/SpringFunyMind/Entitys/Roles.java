@@ -11,5 +11,6 @@ public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_rol;
+    @Column(unique = true, nullable = false)//no se repite rol y no puede estar vacio
     private String rol;
 }

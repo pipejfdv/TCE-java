@@ -25,14 +25,20 @@
                 <button type="button" class="desliz-btn2" onclick="Registrarme()" id="control2">Registrarme</button>
             </div>
             <div class="conten_Form">
-                <form action="../conexion/login.php" method="post" class="formulario" id="Login">
+                <form th:action="@{/ingreso}" method="post" class="formulario" id="Login" th:object="${usuario}">
                     <div class="Logo">
                         <img id="Icono" src="../imagenes/Logo.PNG" width="80" height="80"/>
                     </div>
-                    <input type="text" name="usuario" placeholder="Correo" class="Users" >
-                    <input type="password" name="contrasena" placeholder="Contraseña" class="Users" >
-                    <input type="checkbox" class="check">
+                    <!-- correo usuario -->
+                    <input type="text" name="usuario" th:field="*{correo}" placeholder="Correo" class="Users" >
+                    <!-- error no ingreso correo -->
+                    <span class="error" th:if="${#fields.hasErrors('usuario')}" th:errors="*{correo}"></span>
+                    <!-- ingreso contraseña -->
+                    <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Contraseña" class="Users" >
+                    <!-- error no ingreso contraseña -->
+                    <span class="error" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></span>
                     <!--Se necesita aprender a usar memoria cache-->
+                    <input type="checkbox" class="check">
                     <label class="check_L1">Recordar contraseña</label>
                     <button type="submit" class="validar" name="login">Iniciar Sesión</button>
                 </form>

@@ -1,8 +1,10 @@
 package com.FunnyMind.SpringFunyMind.Services;
 
 import com.FunnyMind.SpringFunyMind.Entitys.Usuarios;
-import com.FunnyMind.SpringFunyMind.Repository.MetodoUsuario;
+import com.FunnyMind.SpringFunyMind.config.UsuarioDetails;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,5 +32,16 @@ public class ServicesUsuario {
     public void eliminarUsuario(int id) {
         //Es recomendable crear un registro de las personas que se van para tener feedback
         metodoUsuario.deleteById(id);
+    }
+
+    //Acceso al usuario
+    //"UserDetails" palabra reservada que maneja datos del usuario, al igual que "UsernameNotFoundException" que permite el manejo de la excepción
+    public UserDetails AccesoUsuario(String correo) throws UsernameNotFoundException{
+        //se crea un objeto de tipo "Usuarios"
+        //maneja una consulta lambda para llamando el repositorio de usuario y bucar el correo, con ello trae el objeto o arroja la excepcion
+        Usuarios usuario = metodoUsuario.findByEmail(correo).orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con ese correo"));
+        //retorna con la palabra reservada "UsuarioDetails" el objeto creado con sus detalles.
+        //esto llama a la clase "UsuarioDetails" en config con su objeto.
+        return new UsuarioDetails(usuario);
     }
 }

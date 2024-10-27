@@ -28,4 +28,12 @@ public class ControllerLogin {
         servicesUsuario.crearActualizarUsuario(usuario);
         return "interfazUsuarios/usuarios";
     }
+
+    @PostMapping("/ingreso")
+    public String ingresoUsuario(@Valid @ModelAttribute("usuario") Usuarios usuario, Errors errors) {
+        if (errors.hasErrors()) {
+            return "logeo/login";
+        }
+        return "interfazUsuarios/usuarios";
+    }
 }

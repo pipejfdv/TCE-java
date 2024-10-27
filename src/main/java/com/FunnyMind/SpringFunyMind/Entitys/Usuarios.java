@@ -34,10 +34,13 @@ public class Usuarios {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate fecha_nacimiento;
     private int genero_id;
+    @ManyToOne(fetch = FetchType.EAGER)//relaciona de mucho a uno en la tabla
+    @JoinColumn(name = "id_rol", nullable = false)//asigna en la columna "id_rol" el rol y que se asigna en el contructor
     //valor por defecto de usuario en su registro
-    private int id_rol = 1;
+    private Roles role;
     @NotBlank
     @Email
+    @Column(unique = true)//no pueda repetir correo
     private String correo;
     @NotBlank
     private String contrasena;
@@ -46,4 +49,10 @@ public class Usuarios {
     private Timestamp fecha_registro;
     //valor por defecto de usuario en su registro
     private int id_especialidad = 1;
+
+    //contructor para asignar un valor de "usuario = 1" cuando se registra
+    public Usuarios() {
+        this.role = new Roles();
+        this.role.setId_rol(1);
+    }
 }
