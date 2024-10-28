@@ -11,5 +11,5 @@ public interface MetodoUsuario extends JpaRepository<com.FunnyMind.SpringFunyMin
     //se podra agregar los otros métodos que requiera el usuario
 
     //se agrega este método en la interfaz para que traiga el correo del usuario para el logeo
-    Optional<Usuarios> findByEmail(String email);
+    Optional<Usuarios> findByCorreo(String correo);
 }

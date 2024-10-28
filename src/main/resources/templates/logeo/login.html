@@ -30,9 +30,9 @@
                         <img id="Icono" src="../imagenes/Logo.PNG" width="80" height="80"/>
                     </div>
                     <!-- correo usuario -->
-                    <input type="text" name="usuario" th:field="*{correo}" placeholder="Correo" class="Users" >
+                    <input type="text" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
                     <!-- error no ingreso correo -->
-                    <span class="error" th:if="${#fields.hasErrors('usuario')}" th:errors="*{correo}"></span>
+                    <span class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></span>
                     <!-- ingreso contraseña -->
                     <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Contraseña" class="Users" >
                     <!-- error no ingreso contraseña -->
