@@ -2,10 +2,15 @@ package com.FunnyMind.SpringFunyMind.Services;
 
 import com.FunnyMind.SpringFunyMind.Entitys.Usuarios;
 import com.FunnyMind.SpringFunyMind.Entitys.UsuariosSecurity;
+<<<<<<< Updated upstream
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+=======
+import com.FunnyMind.SpringFunyMind.Repository.MetodoUsuario;
+import org.springframework.beans.factory.annotation.Autowired;
+>>>>>>> Stashed changes
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +21,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+<<<<<<< Updated upstream
 @AllArgsConstructor
+=======
+>>>>>>> Stashed changes
 public class ServicesUsuario implements UserDetailsService {
     @Autowired
     private com.FunnyMind.SpringFunyMind.Repository.MetodoUsuario metodoUsuario;
@@ -39,6 +47,7 @@ public class ServicesUsuario implements UserDetailsService {
         //Es recomendable crear un registro de las personas que se van para tener feedback
         metodoUsuario.deleteById(id);
     }
+<<<<<<< Updated upstream
     //-------------------metodos de UserDetails-------------------------
 
 
@@ -49,5 +58,15 @@ public class ServicesUsuario implements UserDetailsService {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
         return new UsuariosSecurity(user);
+=======
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuarios usuarios = metodoUsuario.findByCorreo(username);
+        if (usuarios == null) {
+            throw new UsernameNotFoundException("Usuario no encontrado");
+        }
+        return new UsuariosSecurity(usuarios);
+>>>>>>> Stashed changes
     }
 }

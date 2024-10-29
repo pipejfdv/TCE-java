@@ -15,10 +15,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< Updated upstream
 @Slf4j
 @Controller
 @RequestMapping("/v1")
 @AllArgsConstructor
+=======
+
+@Controller
+@RequestMapping("/FunnyMind")
+>>>>>>> Stashed changes
 public class ControllerLogin {
     //importar servicios de usuario
     @Autowired
@@ -34,6 +40,7 @@ public class ControllerLogin {
             return "logeo/login";
         }
         servicesUsuario.crearActualizarUsuario(usuario);
+<<<<<<< Updated upstream
         log.info("REGISTRADO");
         return "interfazUsuarios/usuarios";
     }
@@ -44,5 +51,10 @@ public class ControllerLogin {
     @PreAuthorize("hasAuthority('PACIENTE')or hasAuthority('MEDIC')or hasAuthority('ADMIN')")
     public String ingresoUsuario(@Valid @ModelAttribute("usuario") Usuarios usuario, Errors errors) {
         return "interfazUsuarios/usuarios";
+=======
+        return "interfazUsuarios/usuariosDemo";
+>>>>>>> Stashed changes
     }
+
+
 }
