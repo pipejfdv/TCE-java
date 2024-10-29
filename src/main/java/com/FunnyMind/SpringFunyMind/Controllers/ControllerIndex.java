@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Slf4j //(permite realizar log en la ejecución métodos)
+@RequestMapping("/FunnyMind")
+@RequiredArgsConstructor
 public class ControllerIndex {
     @Autowired
     private ServicesGeneros servicesgeneros;
     //pagina principal
-    @GetMapping("/")
+    @GetMapping("/index")
     public String index() {
         log.info("modelo mvc");
         return "index";
