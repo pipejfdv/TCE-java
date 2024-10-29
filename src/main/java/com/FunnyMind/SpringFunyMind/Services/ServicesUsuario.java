@@ -31,4 +31,13 @@ public class ServicesUsuario {
         //Es recomendable crear un registro de las personas que se van para tener feedback
         metodoUsuario.deleteById(id);
     }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuarios user = metodoUsuario.findByCorreo(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("Usuario no encontrado");
+        }
+        return new UsuariosSecurity(user);
+    }
 }
