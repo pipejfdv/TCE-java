@@ -1,15 +1,19 @@
 package com.FunnyMind.SpringFunyMind.Services;
 
 import com.FunnyMind.SpringFunyMind.Entitys.Usuarios;
+import com.FunnyMind.SpringFunyMind.Entitys.UsuariosSecurity;
 import com.FunnyMind.SpringFunyMind.Repository.MetodoUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ServicesUsuario {
+public class ServicesUsuario implements UserDetailsService {
     @Autowired
     private com.FunnyMind.SpringFunyMind.Repository.MetodoUsuario metodoUsuario;
 

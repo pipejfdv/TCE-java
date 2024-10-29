@@ -25,18 +25,20 @@
                 <button type="button" class="desliz-btn2" onclick="Registrarme()" id="control2">Registrarme</button>
             </div>
             <div class="conten_Form">
-                <form action="../conexion/login.php" method="post" class="formulario" id="Login">
+                <form th:action="@{/v1/Plataforma/home}" method="post" class="formulario" id="Login" th:object="${usuario}">
                     <div class="Logo">
                         <img id="Icono" src="../imagenes/Logo.PNG" width="80" height="80"/>
                     </div>
-                    <input type="text" name="usuario" placeholder="Correo" class="Users" >
-                    <input type="password" name="contrasena" placeholder="Contraseña" class="Users" >
+                    <input type="text" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
+                    <span class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" ></span>
+                    <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Contraseña" class="Users" >
+                    <span class="error" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}" ></span>
                     <input type="checkbox" class="check">
                     <!--Se necesita aprender a usar memoria cache-->
                     <label class="check_L1">Recordar contraseña</label>
                     <button type="submit" class="validar" name="login">Iniciar Sesión</button>
                 </form>
-                <form th:action="@{/registrar}" method="post" class="formulario" id="Registrarme" th:object="${usuario}">
+                <form th:action="@{/FunnyMind/registrar}" method="post" class="formulario" id="Registrarme" th:object="${usuario}">
                     <input type="text" name="primer_nombre" th:field="*{primer_nombre}" placeholder="Primer nombre" class="Users" >
                     <!-- fields detecta el error, que el error se validara en el campo errors "primer_nombre" -->
                     <span class="error" th:if="${#fields.hasErrors('primer_nombre')}" th:errors="*{primer_nombre}" ></span>
