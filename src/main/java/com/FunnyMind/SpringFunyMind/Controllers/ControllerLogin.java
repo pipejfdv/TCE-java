@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@RequestMapping("/FunnyMind")
+@RequiredArgsConstructor
 public class ControllerLogin {
     //importar servicios de usuario
     @Autowired
