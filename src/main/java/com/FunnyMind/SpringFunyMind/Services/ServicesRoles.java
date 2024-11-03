@@ -1,7 +1,6 @@
 package com.FunnyMind.SpringFunyMind.Services;
 
-import com.FunnyMind.SpringFunyMind.Entitys.Roles;
-import com.FunnyMind.SpringFunyMind.Repository.MetodoRoles;
+import com.FunnyMind.SpringFunyMind.Repository.RepositoryRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,19 +10,19 @@ import java.util.Optional;
 @Service
 public class ServicesRoles {
     @Autowired
-    private com.FunnyMind.SpringFunyMind.Repository.MetodoRoles metodoRoles;
+    private RepositoryRoles repositoryRoles;
 
     public List<com.FunnyMind.SpringFunyMind.Entitys.Roles> listaRoles() {
-        return metodoRoles.findAll();
+        return repositoryRoles.findAll();
     }
     public Optional<com.FunnyMind.SpringFunyMind.Entitys.Roles> Rol(int id) {
-        return metodoRoles.findById(id);
+        return repositoryRoles.findById(id);
     }
 
     public void crearActualizar(com.FunnyMind.SpringFunyMind.Entitys.Roles roles) {
-        metodoRoles.save(roles);
+        repositoryRoles.save(roles);
     }
     public void eliminarActualizar(int id) {
-        metodoRoles.deleteById(id);
+        repositoryRoles.deleteById(id);
     }
 }

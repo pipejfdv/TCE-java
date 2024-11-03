@@ -1,7 +1,7 @@
 package com.FunnyMind.SpringFunyMind.Services;
 
 import com.FunnyMind.SpringFunyMind.Entitys.Generos;
-import com.FunnyMind.SpringFunyMind.Repository.MetodoGeneros;
+import com.FunnyMind.SpringFunyMind.Repository.RepositoryGeneros;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +13,18 @@ public class ServicesGeneros {
     //lista
     private List<Generos> generos;
     @Autowired
-    private com.FunnyMind.SpringFunyMind.Repository.MetodoGeneros metodoGeneros;
+    private RepositoryGeneros repositoryGeneros;
 
     public List<com.FunnyMind.SpringFunyMind.Entitys.Generos> listaGeneros() {
         //variable que contiene la lista
-        generos = new ArrayList<>(metodoGeneros.findAll());
+        generos = new ArrayList<>(repositoryGeneros.findAll());
         return generos;
     }
 
     public void crearActualizarGeneros (Generos genero) {
-        metodoGeneros.save(genero);
+        repositoryGeneros.save(genero);
     }
     public void eliminarGeneros (int id) {
-        metodoGeneros.deleteById(id);
+        repositoryGeneros.deleteById(id);
     }
 }

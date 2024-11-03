@@ -61,7 +61,8 @@
                     <span class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></span>
                     <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Asignar contraseña" class="Users">
                     <span class="error" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></span>
-
+                    <input type="text" name="username" th:field="*{username}" placeholder="Usuario" class="Users" >
+                    <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
                     <div class="row">
                         <div class="col col-12">
                             <div class="form-check">

@@ -35,6 +35,7 @@ CREATE TABLE usuarios (
     contrasena VARCHAR(255) NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_especialidad int null,
+    username varchar(20) not null;
     FOREIGN KEY (genero_id) REFERENCES generos(id_genero),
     FOREIGN KEY (id_rol) REFERENCES roles(id_rol),
     FOREIGN KEY (id_especialidad) REFERENCES especialidad(id_especialidad)

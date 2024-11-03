@@ -46,4 +46,6 @@ public class Usuarios {
     private Timestamp fecha_registro;
     //valor por defecto de usuario en su registro
     private int id_especialidad = 1;
+    @NotBlank
+    private String username;
 }
