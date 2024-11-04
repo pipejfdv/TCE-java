@@ -19,17 +19,18 @@ public class UsuariosSecurity implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        //se llama la clase "TipoUsuarioRol" para poderle asignar un rol ->String al usuario de acuerdo con "id_rol" -> int
         String rol = TipoUsuarioRol.tipoUsuarioRol(usuario.getId_rol());
-        return Collections.singleton(new SimpleGrantedAuthority(rol));
+        return Collections.singleton(new SimpleGrantedAuthority(rol));//se le pasa el rol en String y lo aplica para la seguridad
     }
-
+    //toma los datos del usuario en este caso la contraseña
     @Override
     public String getPassword() {
-        return usuario.getContrasena();
+        return usuario.getPassword();
     }
-
+    //toma los datos del usuario en este caso el usuario
     @Override
     public String getUsername() {
-        return usuario.getCorreo();
+        return usuario.getUsername();
     }
 }

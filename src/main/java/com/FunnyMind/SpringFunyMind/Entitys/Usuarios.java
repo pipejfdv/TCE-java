@@ -40,7 +40,7 @@ public class Usuarios {
     @Email
     private String correo;
     @NotBlank
-    private String contrasena;
+    private String password;
     //se aplica en insertable para que no lo tome en el registro
     @Column(name = "fecha_registro", nullable = false, updatable = false, insertable = false)
     private Timestamp fecha_registro;

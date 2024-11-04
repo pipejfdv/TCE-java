@@ -25,19 +25,22 @@
                 <button type="button" class="desliz-btn2" onclick="Registrarme()" id="control2">Registrarme</button>
             </div>
             <div class="conten_Form">
-                <form th:action="@{/v1/Plataforma/home}" method="post" class="formulario" id="Login" th:object="${usuario}">
+                <!--Esto representa la acción de security y que identifique el login "th:action="@{/FunnyMind/login}" -->
+                <form th:action="@{/FunnyMind/login}" method="post" class="formulario" id="Login" th:object="${usuario}">
                     <div class="Logo">
                         <img id="Icono" src="../imagenes/Logo.PNG" width="80" height="80"/>
                     </div>
-                    <input type="text" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
-                    <span class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}" ></span>
-                    <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Contraseña" class="Users" >
-                    <span class="error" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}" ></span>
+                    <!--Es necesario que los campos de usuario y contraseña tengan esos nombres, así los maneja Spring -->
+                    <input type="text" name="username" th:field="*{username}" placeholder="usuario" class="Users" >
+                    <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>
+                    <input type="password" name="password" th:field="*{password}" placeholder="Contraseña" class="Users" >
+                    <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" ></span>
                     <input type="checkbox" class="check">
                     <!--Se necesita aprender a usar memoria cache-->
                     <label class="check_L1">Recordar contraseña</label>
                     <button type="submit" class="validar" name="login">Iniciar Sesión</button>
                 </form>
+                <!--permte ejecutar el controlador para el evento de registro de usuario-->
                 <form th:action="@{/FunnyMind/registrar}" method="post" class="formulario" id="Registrarme" th:object="${usuario}">
                     <input type="text" name="primer_nombre" th:field="*{primer_nombre}" placeholder="Primer nombre" class="Users" >
                     <!-- fields detecta el error, que el error se validara en el campo errors "primer_nombre" -->
@@ -59,10 +62,10 @@
                     </select>
                     <input type="text" name="correo" th:field="*{correo}" placeholder="Correo" class="Users" >
                     <span class="error" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></span>
-                    <input type="password" name="contrasena" th:field="*{contrasena}" placeholder="Asignar contraseña" class="Users">
-                    <span class="error" th:if="${#fields.hasErrors('contrasena')}" th:errors="*{contrasena}"></span>
                     <input type="text" name="username" th:field="*{username}" placeholder="Usuario" class="Users" >
                     <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+                    <input type="password" name="password" th:field="*{password}" placeholder="Asignar contraseña" class="Users">
+                    <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
                     <div class="row">
                         <div class="col col-12">
                             <div class="form-check">

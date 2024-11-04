@@ -1,16 +1,16 @@
 package com.FunnyMind.SpringFunyMind.Config;
-
+//Esta clase fue diseña para que identificar y asignar rol de acuerdo al id que tenga
 public class TipoUsuarioRol {
     public static String tipoUsuarioRol(int role) {
         switch (role) {
             case 1:
-                return "ROLE_ADMIN";
+                return "PACIENTE";
             case 2:
-                return "ROLE_PACIENTE";
+                return "ADIMINISTRADOR";
             case 3:
-                return "ROLE_MEDIC";
+                return "TERAPEUTA";
             default:
-                return "ROLE_USER";
+                return "PACIENTE";
         }
     }
 }

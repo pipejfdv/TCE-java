@@ -32,7 +32,7 @@ CREATE TABLE usuarios (
     genero_id int NOT NULL,
     id_rol int not null,
     correo VARCHAR(100) NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     fecha_registro TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_especialidad int null,
     username varchar(20) not null;
