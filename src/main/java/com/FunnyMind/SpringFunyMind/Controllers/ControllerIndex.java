@@ -52,4 +52,10 @@ public class ControllerIndex {
         servicesUsuario.crearActualizarUsuario(usuario);
         return "login";
     }
+
+    //ruta para acceder al demo
+    @GetMapping("/demo")
+    public String demo() {
+        return "interfazUsuarios/juegoMemoria";
+    }
 }

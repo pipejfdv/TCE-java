@@ -1,7 +1,7 @@
 .left-content {
     display: grid;
     grid-template-rows: 50% 50%;
-    background: rgba(246, 247, 251, 0.43);
+    background: rgba(246, 247, 251, 0.63);
     margin: 15px;
     padding: 20px;
     border-radius: 15px;
@@ -17,7 +17,7 @@
 
 .activity-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 150px);
     column-gap: 10px;
 }
