@@ -34,8 +34,6 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)//se desactiva para no activar el token que requiere adicional
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("FunnyMind/**","/css/**", "/js/**", "/imagenes/**").permitAll() // permitir todas las rutas libres
-//                        .requestMatchers("/v1/Plataforma/Admin").hasRole("ADIMINISTRADOR") // autenticación rol ADMIN
-//                        .requestMatchers("/v1/Plataforma/Paciente").hasRole("PACIENTE") // autenticación rol PACIENTE
                         .requestMatchers("/v1/PlataformaDoctor/**").hasAnyAuthority("TERAPEUTA") // autenticación rol MEDIC
                         .requestMatchers("/v1/Plataforma/**").authenticated() // requiere autenticación para acceso a la plataforma
                 )
@@ -46,7 +44,12 @@ public class SecurityConfig {
                                 //.failureUrl("/FunnyMind/login?error")//permite ver log de seguridad
                                 .permitAll()//permite que todos los usuarias tengan acceso al login
                 )
-                .logout(LogoutConfigurer::permitAll)//permitir salir de la sesión
+                .logout(logout -> logout//permitir salir de la sesión
+                        .permitAll()
+                        .logoutSuccessUrl("/FunnyMind/index")//redirige a la página de inicio
+                        .invalidateHttpSession(true)//invalida las credenciales
+                        .deleteCookies("JSESSIONID")//borrar cookies de acceso
+                )
                 .build();//construye todo el objeto http
     }
 
@@ -54,5 +57,6 @@ public class SecurityConfig {
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }
 

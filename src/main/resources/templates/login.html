@@ -35,9 +35,6 @@
                     <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>
                     <input type="password" name="password" th:field="*{password}" placeholder="Contraseña" class="Users" >
                     <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" ></span>
-                    <input type="checkbox" class="check">
-                    <!--Se necesita aprender a usar memoria cache-->
-                    <label class="check_L1">Recordar contraseña</label>
                     <button type="submit" class="validar" name="login">Iniciar Sesión</button>
                 </form>
                 <!--permte ejecutar el controlador para el evento de registro de usuario-->
