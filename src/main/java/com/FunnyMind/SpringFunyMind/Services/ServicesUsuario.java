@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,12 +45,14 @@ public class ServicesUsuario implements UserDetailsService {
         repositoryUsuario.deleteById(id);
     }
 
-    @Override
+    @Override //la clase nos trae un objeto de "UserDetails" con el método reservado de "loadUserByUsername"
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        //crea un objeto de tipo "Usuarios" donde del repositorio traera el usuario
         Usuarios usuario = repositoryUsuario.findByUsername(username);
         if (usuario == null) {
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
+        //al obtener el objeto y que exista se crea el objeto o entidad con dicha información para que valide sus credenciales
         return new UsuariosSecurity(usuario);
     }
 }

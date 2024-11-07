@@ -4,13 +4,15 @@ public class TipoUsuarioRol {
     public static String tipoUsuarioRol(int role) {
         switch (role) {
             case 1:
-                return "PACIENTE";
+                return "USUARIO";
             case 2:
-                return "ADIMINISTRADOR";
+                return "PACIENTE";
             case 3:
                 return "TERAPEUTA";
+            case 4:
+                return "ADMINISTRADOR";
             default:
-                return "PACIENTE";
+                return "NULL";
         }
     }
 }

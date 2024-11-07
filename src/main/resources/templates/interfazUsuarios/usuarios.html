@@ -17,8 +17,12 @@
                 <nav th:replace="plantillas/interfazNav :: nav"></nav>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
-                <section id="contenidoInicio">
-                    <div th:replace="plantillas/interfazContenido :: inicio"></div>
+                <section id="contenidoInicioPaciente">
+                    <div th:replace="plantillas/interfazContenidoPaciente :: inicioPaciente"></div>
+                </section>
+
+                <section id="contenidoInicioTerapeuta">
+                    <div th:replace="plantillas/interfazContenidoTeraputa :: inicioTerapeuta"></div>
                 </section>
 
             </div>
@@ -26,7 +30,7 @@
 
 </main>
 
-<script src="/js/animacionesNavInterfaz.js"></script>
-<script src="/js/boostrapJs/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/animacionesNavInterfaz.js"></script>
+    <script src="/js/boostrapJs/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
