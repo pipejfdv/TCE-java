@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Terapeuta</title>
@@ -10,7 +10,17 @@
   <div class="left-content">
     <div class="activities">
       <h1>Articulos de tu interés</h1>
-      <
+
+        <ul>
+            <!-- Itera sobre la lista de noticias y muestra cada noticia -->
+            <li th:each="noticia : ${listaNoticias}">
+                <h2 th:text="${noticia.titulo}">Título</h2>
+                <p th:text="${noticia.descripcion}">Descripción</p>
+                <p><strong>Fuente:</strong> <span th:text="${noticia.fuente}">Fuente</span></p>
+                <p><strong>País:</strong> <span th:text="${noticia.pais}">País</span></p>
+            </li>
+        </ul>
+
     </div>
   </div>
 </div>

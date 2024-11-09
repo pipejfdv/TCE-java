@@ -23,7 +23,7 @@ public class ApiMediastack {
         String baseUrl = "https://api.mediastack.com/v1/news";
 
         //creación de consulta
-        String url = baseUrl + "?access_key=" + APIKEY + "&categories=health&limit=10" ;
+        String url = baseUrl + "?access_key=" + APIKEY + "&categories=health&limit=10&sort=popularity&languages=en" ;
         try {
             //se crea el elemento completo
             URL apiNews = new URL(url);
@@ -51,21 +51,10 @@ public class ApiMediastack {
                 }
                 //cierra el "BufferedReader"
                 buf.close();
-                //pasar los datos de "data.toString()" a un array
-                JSONArray arrayNoticias = new JSONArray(data.toString());
-                //lista donde que se genera con lo objetos
-                List<ApiResponseNews> listaNoticias = new ArrayList<>();
-                //iterar la lista "arrayNoticias" para agregar "objetoApiResponseNews" para que se un objeto
-                for (int i = 0; i < arrayNoticias.length(); i++) {
-                    JSONObject noticia = arrayNoticias.getJSONObject(i);
-                    ApiResponseNews item = new ApiResponseNews(
-                            noticia.getString("titulo"),
-                            noticia.getString("descripcion"),
-                            noticia.getString("fuente"),
-                            noticia.getString("pais")
-                    );
-                    listaNoticias.add(item);
-                }
+
+                System.out.println("respuesta api " + data.toString());
+                //crea una clase interna para el proceso "getApiResponseNews"
+                List<ApiResponseNews> listaNoticias = getApiResponseNews(data);
                 return listaNoticias;
             }
         }
@@ -87,5 +76,34 @@ public class ApiMediastack {
             throw new RuntimeException(e);
         }
         return null;
+    }
+
+    private static List<ApiResponseNews> getApiResponseNews(StringBuilder data) {
+        //crea un objeto json con el "data.toString()"
+        JSONObject respuesta = new JSONObject(data.toString());
+
+        //pasar los datos de "data.toString()" a un array
+        JSONArray arrayNoticias = respuesta.getJSONArray("data");
+        //lista donde que se genera con lo objetos
+        List<ApiResponseNews> listaNoticias = new ArrayList<>();
+        //iterar la lista "arrayNoticias" para agregar "objetoApiResponseNews" para que se un objeto
+        for (int i = 0; i < arrayNoticias.length(); i++) {
+            JSONObject noticia = arrayNoticias.getJSONObject(i);
+            //sacar el codigo del pais del json
+            String codigo = noticia.optString("country");
+            //cambiar el código por el nombre del pais
+            String nombrePais = CodigoPais.nombrePais(codigo);
+            ApiResponseNews item = new ApiResponseNews(
+                    //
+                    noticia.optString("title", "Sin titulo"),
+                    noticia.optString("description", "no se encuentra descripción"),
+                    noticia.optString("source", "Fuente no encontrada"),
+                    nombrePais,
+                    //en caso de no encontrar la imagen la remplaza con un por default y la remplaza en el campo "image"
+                    noticia.optString("image", "").isEmpty() ? "/imagenes/defaultApi.jpg" : noticia.optString("image")
+            );
+            listaNoticias.add(item);
+        }
+        return listaNoticias;
     }
 }

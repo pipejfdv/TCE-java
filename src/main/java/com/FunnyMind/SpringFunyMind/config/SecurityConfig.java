@@ -1,32 +1,24 @@
 package com.FunnyMind.SpringFunyMind.Config;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Controller;
-
-import java.io.IOException;
 
 @Controller
 @EnableWebSecurity
 @EnableMethodSecurity
 @RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+
+
 
     @Bean//crear objeto tipo "Bean" para filtrado de enlaces
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -40,7 +32,8 @@ public class SecurityConfig {
                .formLogin( form ->
                         form.loginPage("/FunnyMind/login")//pagina a la que debe dirigirse
                                 .loginProcessingUrl("/FunnyMind/login")//proceso del controller el que debe realizar despues de ingresar credenciales
-                                .defaultSuccessUrl("/v1/Plataforma/home",true)//pagina por defecto a la cual lo redirige
+                                .successHandler(new RedireccionRol())//se remplaza para redirigir al usuario deacuerdo a su rol
+                                //.defaultSuccessUrl("/v1/Plataforma/home",true)//pagina por defecto a la cual lo redirige
                                 //.failureUrl("/FunnyMind/login?error")//permite ver log de seguridad
                                 .permitAll()//permite que todos los usuarias tengan acceso al login
                 )

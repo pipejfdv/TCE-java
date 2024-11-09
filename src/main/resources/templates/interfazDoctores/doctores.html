@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Especialista</title>
 </head>
 <body>
     <h1>Especialista</h1>
+    <ul>
+        <!-- Itera sobre la lista de noticias y muestra cada noticia -->
+        <ul>
+            <!-- Itera sobre la lista de noticias y muestra cada noticia -->
+            <li th:each="noticia : ${listaNoticias}">
+                <img th:src="${noticia.image}" alt="imagen de noticia">
+                <h2 th:text="${noticia.title}">Título</h2>
+                <p th:text="${noticia.description}">Descripción</p>
+                <p><strong>Fuente:</strong> <span th:text="${noticia.source}">Fuente</span></p>
+                <p><strong>País:</strong> <span th:text="${noticia.country}">País</span></p>
+            </li>
+        </ul>
+
+    </ul>
 </body>
 </html>
