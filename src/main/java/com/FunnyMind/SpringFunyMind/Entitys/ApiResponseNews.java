@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 //objeto de las noticias, se realiza para tomar el objeto.
 public class ApiResponseNews {
     private String title;       // en lugar de "titulo"
-    private String description; // en lugar de "descripcion"
+    private String url;
     private String source;      // en lugar de "fuente"
     private String country;     // en lugar de "pais"
     private String image;       // en lugar de "imagen"

@@ -51,8 +51,6 @@ public class ApiMediastack {
                 }
                 //cierra el "BufferedReader"
                 buf.close();
-
-                System.out.println("respuesta api " + data.toString());
                 //crea una clase interna para el proceso "getApiResponseNews"
                 List<ApiResponseNews> listaNoticias = getApiResponseNews(data);
                 return listaNoticias;
@@ -96,7 +94,7 @@ public class ApiMediastack {
             ApiResponseNews item = new ApiResponseNews(
                     //
                     noticia.optString("title", "Sin titulo"),
-                    noticia.optString("description", "no se encuentra descripción"),
+                    noticia.optString("url", "no se encuentra enlace"),
                     noticia.optString("source", "Fuente no encontrada"),
                     nombrePais,
                     //en caso de no encontrar la imagen la remplaza con un por default y la remplaza en el campo "image"

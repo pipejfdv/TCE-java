@@ -21,6 +21,7 @@ public class ControllerPlataforma {
     private ApiMediastack apiMediastack;
 
     @GetMapping("/home")
+    @PreAuthorize("hasAuthority('PACIENTE') or hasAuthority('USUARIO')")
     public String home() {
         return "interfazUsuarios/usuarios";
     }

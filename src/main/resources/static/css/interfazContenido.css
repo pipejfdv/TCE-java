@@ -6,7 +6,6 @@
     padding: 20px;
     border-radius: 15px;
 }
-
 /* ACTIVITIES */
 
 .activities h1 {
@@ -90,4 +89,16 @@
     margin-bottom: 8px;
     margin-right: 10px;
     color: #fff;
+}
+
+/* terapeuta carrusel */
+.full-width-carousel{
+    width: 100%;
+    max-width: 100%;
+}
+
+.card-img-top {
+    width: 100%;           /* Asegura que ocupe el ancho de su contenedor */
+    height: 300px;         /* Altura fija */
+    object-fit: cover;     /* Recorta la imagen para que se ajuste sin deformarse */
 }

@@ -24,7 +24,7 @@ public class RedireccionRol implements AuthenticationSuccessHandler {
         }
         else if(authentication.getAuthorities().contains(new SimpleGrantedAuthority("PACIENTE"))){
             //paciente
-            response.sendRedirect("/v1/PlataformaDoctor/home");
+            response.sendRedirect("/v1/Plataforma/home");
         }
         else {
             response.sendRedirect("/FunnyMind/index");
