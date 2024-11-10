@@ -18,17 +18,26 @@
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
                 <!--Inicio de la interfaz de paciente o usuario-->
-                <section id="contenidoInicioPaciente">
-                    <div th:replace="plantillas/interfazContenidoPaciente :: inicioPaciente"></div>
+                <section>
+                    <div class="contenedorInicio">
+                        <div th:replace="plantillas/interfazContenidoPaciente :: inicioPaciente"></div>
+                    </div>
                 </section>
                 <!--"Datos personales" de la interfaz de paciente o usuario-->
                 <section>
-
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" th:value="${genero}" disabled/>
+                    <div class="contenedorDatos" style="display: none">
+                        <div th:include="plantillas/interfazContenidoPaciente :: datosPersonales"></div>
                     </div>
-
-                    <div th:include="plantillas/interfazContenidoPaciente :: datosPersonales"></div>
+                </section>
+                <section>
+                    <div class="contenedorCategoria" style="display: none">
+                        <div th:include="plantillas/interfazContenidoPaciente :: categoriaJuegos"></div>
+                    </div>
+                </section>
+                <section>
+                    <div class="contenedorEstadistica" style="display: none">
+                        <div th:include="plantillas/interfazContenidoPaciente :: estadistica"></div>
+                    </div>
                 </section>
             </div>
         </div>
@@ -36,6 +45,7 @@
 </main>
 
     <script src="/js/animacionesNavInterfaz.js"></script>
+    <script src="/js/animaciones.js"></script>
     <script src="/js/boostrapJs/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

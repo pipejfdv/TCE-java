@@ -44,13 +44,18 @@ public class ControllerIndex {
 
     @PostMapping("/registrar")
     public String registrar(@Valid @ModelAttribute("usuario") Usuarios usuario, Errors errors, Model model) {
+        String estado;
         if (errors.hasErrors()) {
             //permite cargar de nuevo la lista de generos
             model.addAttribute("generos", servicesgeneros.listaGeneros());
+            model.addAttribute("estado", estado="No se pudo registrar" );
             return "login";
         }
-        servicesUsuario.crearActualizarUsuario(usuario);
-        return "login";
+        else {
+            model.addAttribute("estado", estado="Registrado" );
+            servicesUsuario.crearActualizarUsuario(usuario);
+            return "login";
+        }
     }
 
     //ruta para acceder al demo

@@ -21,3 +21,29 @@ var z = document.getElementById('elegir');
 var bloque_formulario = document.querySelector('.bloque_formulario');
 var footer = document.querySelector('.bloque_formulario');
 
+
+// anicación de ocultar elementos dentro de la interfaz de inicio
+function inicioPlataforma(){
+    document.querySelector('.contenedorInicio').style.display='';
+    document.querySelector('.contenedorDatos').style.display='none';
+    document.querySelector('.contenedorCategoria').style.display='none';
+    document.querySelector('.contenedorEstadistica').style.display='none';
+}
+function datosPersonales(){
+    document.querySelector('.contenedorDatos').style.display='';
+    document.querySelector('.contenedorInicio').style.display='none';
+    document.querySelector('.contenedorCategoria').style.display='none';
+    document.querySelector('.contenedorEstadistica').style.display='none';
+}
+function categoriaJuegos(){
+    document.querySelector('.contenedorCategoria').style.display='';
+    document.querySelector('.contenedorDatos').style.display='none';
+    document.querySelector('.contenedorInicio').style.display='none';
+    document.querySelector('.contenedorEstadistica').style.display='none';
+}
+function estadistica(){
+    document.querySelector('.contenedorCategoria').style.display='none';
+    document.querySelector('.contenedorDatos').style.display='none';
+    document.querySelector('.contenedorInicio').style.display='none';
+    document.querySelector('.contenedorEstadistica').style.display='';
+}

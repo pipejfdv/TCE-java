@@ -25,7 +25,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)//se desactiva para no activar el token que requiere adicional
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("FunnyMind/**","/css/**", "/js/**", "/imagenes/**").permitAll() // permitir todas las rutas libres
+                        .requestMatchers("FunnyMind/**","/css/**", "/js/**", "/imagenes/**", "/plantillas/pantallaCarga").permitAll() // permitir todas las rutas libres
                         .requestMatchers("/v1/PlataformaDoctor/**").hasAnyAuthority("TERAPEUTA") // autenticación rol MEDIC
                         .requestMatchers("/v1/Plataforma/**").authenticated() // requiere autenticación para acceso a la plataforma
                 )
@@ -39,7 +39,7 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout//permitir salir de la sesión
                         .permitAll()
-                        .logoutSuccessUrl("/FunnyMind/index")//redirige a la página de inicio
+                        .logoutSuccessUrl("/FunnyMind/login")//redirige a la página de inicio
                         .invalidateHttpSession(true)//invalida las credenciales
                         .deleteCookies("JSESSIONID")//borrar cookies de acceso
                 )

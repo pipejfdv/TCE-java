@@ -5,6 +5,7 @@ import com.FunnyMind.SpringFunyMind.Entitys.ApiResponseNews;
 import com.FunnyMind.SpringFunyMind.Entitys.Usuarios;
 import com.FunnyMind.SpringFunyMind.Services.ServicesGeneros;
 import com.FunnyMind.SpringFunyMind.Services.ServicesUsuario;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,17 +23,18 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/v1/Plataforma")//rutas privadas
 @RequiredArgsConstructor
+@Slf4j
 public class ControllerPlataforma {
     @Autowired
     private ServicesUsuario servicesUsuario;
     @Autowired
     private ServicesGeneros servicesGeneros;
-
+    //traer datos del usuario al home
     @GetMapping("/home")
     @PreAuthorize("hasAuthority('PACIENTE') or hasAuthority('USUARIO')")
     public String home(Model model) {
         //esto retorna una lista y se debe sacar el elemento deseado "servicesUsuario.getUsuario();
-        Optional<Usuarios> usuarioLogueado = servicesUsuario.getUsuario();
+        Optional<Usuarios> usuarioLogueado = servicesUsuario.getDatosUsuario();
         //si esta presente el usuario logueado retorna sus elementos
         if (usuarioLogueado.isPresent()) {
             //se le asigna a la vista "datosUsuario" y se le extrae sus componentes
@@ -43,6 +45,33 @@ public class ControllerPlataforma {
         else {
             return "redirect:/login";
         }
+        return "interfazUsuarios/usuarios";
+    }
+
+    //accion de actualizar datos de usuario
+    @GetMapping("/actualizar/{id}")
+    @PreAuthorize("hasAuthority('PACIENTE') or hasAuthority('USUARIO')")
+    public String actualizar(Model model, @PathVariable int id) {
+        Optional<Usuarios> usuarioLogueado = servicesUsuario.getUsario(id);
+        if (usuarioLogueado.isPresent()) {
+            model.addAttribute("datosUsuario", usuarioLogueado.get());
+            model.addAttribute("generos", servicesGeneros.listaGeneros());
+        }
+        else {
+            model.addAttribute("error", "Usuario no encontrado");
+        }
+        return "actualizarDatos";
+    }
+
+    //guardar datos en la actualización de datos dentro de la interfaz
+    @PostMapping("/guardar")
+    @PreAuthorize("hasAuthority('PACIENTE') or hasAuthority('USUARIO')")
+    public String guardar(@Valid @ModelAttribute("datosUsuario") Usuarios usuarios, Errors errors, Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("generos", servicesGeneros.listaGeneros());
+            return "actualizarDatos";
+        }
+        log.info("ESTOY AQUI" +usuarios.toString());
         return "interfazUsuarios/usuarios";
     }
 }

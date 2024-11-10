@@ -102,3 +102,7 @@
     height: 300px;         /* Altura fija */
     object-fit: cover;     /* Recorta la imagen para que se ajuste sin deformarse */
 }
+/*errores*/
+.error{
+    color: red;
+}

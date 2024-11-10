@@ -32,7 +32,12 @@ public class ServicesUsuario implements UserDetailsService {
         return repositoryUsuario.findAll();
     }
 
-    public Optional<com.FunnyMind.SpringFunyMind.Entitys.Usuarios> getUsuario() {
+    public Optional<Usuarios> getUsario(int id) {
+        //Es recomendable crear un registro de las personas que se van para tener feedback
+        return repositoryUsuario.findById(id);
+    }
+
+    public Optional<com.FunnyMind.SpringFunyMind.Entitys.Usuarios> getDatosUsuario() {
         //atra vez de security y su repositorio "Authentication" me valida la autenticación
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         //Tomo el username del usuario logeado
