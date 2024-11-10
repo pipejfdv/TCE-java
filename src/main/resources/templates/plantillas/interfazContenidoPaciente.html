@@ -5,6 +5,8 @@
     <title>Paciente</title>
 </head>
 <body>
+
+    <!--Inicio de la interfaz de paciente o usuario-->
     <div class="cotainer" th:fragment="inicioPaciente">
         <div class="left-content">
             <div class="activities">
@@ -35,5 +37,68 @@
             </div>
         </div>
     </div>
+
+    <!--"Datos personales" de la interfaz de paciente o usuario-->
+    <div class="container" th:fragment="datosPersonales" >
+        <div class="container" style="background: rgba(246, 247, 251, 0.63);margin: 15px;border-radius: 15px; padding: 20px;">
+            <h1>Datos personales</h1>
+            <div class="row mb-2">
+                <!--gap es separación de las columnas-->
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Primer Nombre</span>
+                        <input type="text" class="form-control" th:value="${datosUsuario.primer_nombre}" disabled/>
+                    </div>
+                </div>
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Segundo Nombre</span>
+                        <input type="text" class="form-control" th:value="${datosUsuario.segundo_nombre}" disabled/>
+                    </div>
+                </div>
+                <div class="column-gap-1 col-6">
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Primer Apellido</span>
+                        <input type="text" class="form-control" th:value="${datosUsuario.primer_apellido}" disabled/>
+                    </div>
+                </div>
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Segundo Apellido</span>
+                        <input type="text" class="form-control" th:value="${datosUsuario.segundo_apellido}" disabled/>
+                    </div>
+                </div>
+
+
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">fecha nacimiento</span>
+                        <input type="date" class="form-control" th:value="${datosUsuario.fecha_nacimiento}" disabled/>
+                    </div>
+                </div>
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Genero</span>
+                        <input type="text" class="form-control" th:value="${genero}" disabled/>
+                    </div>
+                </div>
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Correo</span>
+                        <input type="text" class="form-control" th:value="${datosUsuario.correo}" disabled/>
+                    </div>
+                </div>
+                <div class="column-gap-1 col-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Usuario</span>
+                        <input type="text" class="form-control" th:value="${datosUsuario.username}" disabled/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </body>
 </html>

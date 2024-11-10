@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/interfazNav.css">
@@ -17,10 +17,19 @@
                 <nav th:replace="plantillas/interfazNav :: nav"></nav>
             </div>
             <div class="col-sm-12 col-md-9 col-lg-9">
+                <!--Inicio de la interfaz de paciente o usuario-->
                 <section id="contenidoInicioPaciente">
                     <div th:replace="plantillas/interfazContenidoPaciente :: inicioPaciente"></div>
                 </section>
+                <!--"Datos personales" de la interfaz de paciente o usuario-->
+                <section>
 
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" th:value="${genero}" disabled/>
+                    </div>
+
+                    <div th:include="plantillas/interfazContenidoPaciente :: datosPersonales"></div>
+                </section>
             </div>
         </div>
     </div>

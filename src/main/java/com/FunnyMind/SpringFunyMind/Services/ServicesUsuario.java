@@ -4,7 +4,10 @@ import com.FunnyMind.SpringFunyMind.Entitys.Usuarios;
 import com.FunnyMind.SpringFunyMind.Entitys.UsuariosSecurity;
 import com.FunnyMind.SpringFunyMind.Repository.RepositoryUsuario;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -29,8 +32,15 @@ public class ServicesUsuario implements UserDetailsService {
         return repositoryUsuario.findAll();
     }
 
-    public Optional<com.FunnyMind.SpringFunyMind.Entitys.Usuarios> getUsuario(int id) {
-        return repositoryUsuario.findById(id);
+    public Optional<com.FunnyMind.SpringFunyMind.Entitys.Usuarios> getUsuario() {
+        //atra vez de security y su repositorio "Authentication" me valida la autenticación
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        //Tomo el username del usuario logeado
+        String username = authentication.getName();
+        //lo busco en la base de datos para retornar la entidad
+        Usuarios usuario = repositoryUsuario.findByUsername(username);
+        //si el usuario es diferente de null significa que si encontro una entidad, la busca y lo retorna en "Optional" en caso que no lo regresa en "Optional.empty()"
+        return usuario != null ? repositoryUsuario.findById(usuario.getId_usuario()) : Optional.empty();
     }
 
     //métodos que de los usuarios crear cuenta y actualizar datos
