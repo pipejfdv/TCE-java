@@ -11,7 +11,7 @@ body {
 }
 
 body {
-    background-image: url(../imagenes/juegos/parejas/fondo.png);
+    background-image: url(../../../imagenes/juegos/parejas/fondo.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -64,7 +64,7 @@ body {
 }
 
 .carta.abajo {
-    background: url(../imagenes/juegos/parejas/cartas/reverso.jpg) repeat center center;
+    background: url(../../../imagenes/juegos/parejas/cartas/reverso.jpg) repeat center center;
     background-size: contain;
 }
 

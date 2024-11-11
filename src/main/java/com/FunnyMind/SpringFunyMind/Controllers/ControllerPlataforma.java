@@ -71,7 +71,7 @@ public class ControllerPlataforma {
             model.addAttribute("generos", servicesGeneros.listaGeneros());
             return "actualizarDatos";
         }
-        log.info("ESTOY AQUI" +usuarios.toString());
+        servicesUsuario.crearActualizarUsuario(usuarios);
         return "interfazUsuarios/usuarios";
     }
 }

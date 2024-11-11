@@ -16,8 +16,8 @@ public class ServicesPuntajeActividades {
         return repositoryPuntajeActividades.findAll();
     }
 
-    public Optional<com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades> puntajeActividadesUsuario(int id){
-        return repositoryPuntajeActividades.findById(id);
+    public Optional<com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades> puntajeActividadesUsuario(int idUsuario){
+        return repositoryPuntajeActividades.findByIdUsuario(idUsuario);
     }
 
     public void actualizarPuntaje (com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades puntajeActividades){

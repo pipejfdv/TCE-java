@@ -14,17 +14,21 @@
                 <div class="activity-container"><!--Contenedor de juegos de inicio-->
 
                     <div class="image-container img-one">
-                        <img src="/imagenes/juegos/parejas/iconoMemoria.png" alt="icono juego memoria"/>
-                        <div class="overlay">
-                            <h3>Memoria</h3>
-                        </div>
+
+                            <img src="/imagenes/juegos/parejas/iconoMemoria.png" alt="icono juego memoria"/>
+                            <div class="overlay">
+                                <h3>Memoria</h3>
+                            </div>
+
                     </div>
 
                     <div class="image-container img-two">
-                        <img src="/imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="icono de juego torres de hanoi"/>
-                        <div class="overlay">
-                            <h3>Hanoi</h3>
-                        </div>
+                        <a th:href="@{/v1/Plataforma/juegos/torresHanoi/{id}(id=${datosUsuario.id_usuario})}">
+                            <img src="/imagenes/Interfaz_juegos/torre_hanoi.PNG" alt="icono de juego torres de hanoi"/>
+                            <div class="overlay">
+                                <h3>Hanoi</h3>
+                            </div>
+                        </a>
                     </div>
 
                     <div class="image-container img-three">

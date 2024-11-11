@@ -94,13 +94,13 @@ CREATE TABLE sesiones (
 -- Tabla de puntajes de actividades
 CREATE TABLE puntajes_actividades (
     id_puntaje INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-    id_usuario INT NOT NULL,
+    idUsuario INT NOT NULL,
     id_juego INT NOT NULL,
     id_categoria INT NOT NULL,
     fecha_realizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     puntaje_juego INT not NULL default 0,
     puntaje_categoria INT not NULL default 0,
-    FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
+    FOREIGN KEY (idUsuario) REFERENCES usuarios(idUsuario),
     FOREIGN KEY (id_categoria) REFERENCES categoria_juegos(id_categoriaJuego),
     FOREIGN KEY (id_juego) REFERENCES juegos(id_juego)
 );
@@ -124,3 +124,9 @@ INSERT into especialidad (id_especialidad, nombre) VALUES (4,'psicólogo clinico
 
 alter table usuarios alter column id_rol set default 1;
 alter table usuarios alter column id_especialidad set default 1;
+/*se inserta categoria de juegos en la tabla categoria_juegos*/
+insert into categoria_juegos (id_categoriaJuego, categoria) values (1, 'logica');
+insert into categoria_juegos (id_categoriaJuego, categoria) values (2, 'memoria');
+insert into categoria_juegos (id_categoriaJuego, categoria) values (3, 'resolucion');
+/*se inserta juego en la tabla juegos*/
+insert into juegos(id_juego, nombre, descripcion, id_categoriaJuego) values(1, 'torres Hanoi', 'juego para logica', 1);

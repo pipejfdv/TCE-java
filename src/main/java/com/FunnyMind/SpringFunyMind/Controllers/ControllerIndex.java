@@ -44,7 +44,7 @@ public class ControllerIndex {
 
     @PostMapping("/registrar")
     public String registrar(@Valid @ModelAttribute("usuario") Usuarios usuario, Errors errors, Model model) {
-        String estado;
+        String estado;// información para el usuario
         if (errors.hasErrors()) {
             //permite cargar de nuevo la lista de generos
             model.addAttribute("generos", servicesgeneros.listaGeneros());
