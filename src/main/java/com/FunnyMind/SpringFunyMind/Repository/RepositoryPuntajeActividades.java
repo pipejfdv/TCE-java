@@ -10,4 +10,8 @@ import java.util.Optional;
 public interface RepositoryPuntajeActividades extends JpaRepository<com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades, Integer> {
     //permite busar el id del usuario para agregar puntaje
     Optional<PuntajeActividades> findByIdUsuario(int idUsuario);
+
+    //se crea para ayudar ajustar la categoria y el jugador
+    Optional<PuntajeActividades> findByIdUsuarioAndIdJuego(int idUsuario, int idJuego);
+    Optional<PuntajeActividades> findByIdUsuarioAndIdCategoria(int idUsuario, int idCategoria);
 }

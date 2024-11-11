@@ -58,7 +58,7 @@ window.onload = function () {
       carta.setAttribute("class", "carta abajo");
       contenedor.appendChild(carta);
       carta.innerHTML =
-        "<img class='img-simpson' src='../imagenes/juegos/parejas/cartas/" +
+        "<img class='img-simpson' src='/imagenes/juegos/parejas/cartas/" +
         numerosCartas[key] +
         ".png'/>";
     });
@@ -157,6 +157,22 @@ window.onload = function () {
 
   function ganaste() {
     clearInterval(tiempo);
+    fetch('/v1/Plataforma/juegos/guardarPuntaje', {
+          method:'post',
+          headers:{
+            'Content-type':'application/json'
+          },
+          body:JSON.stringify({puntaje:10,
+            categoria:2,
+            IdJuego:2})
+        })
+        .then(response =>response.text())
+        .then(data=>{
+          console.log("10 puntos",data);
+        })
+        .catch(error =>{
+          console.log('No se guardo el puntaje ', error);
+        });
     document.getElementById("ganaste").classList.add("activo");
     document.getElementById("detener").setAttribute("disabled", "");
   }

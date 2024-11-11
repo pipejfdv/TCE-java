@@ -269,7 +269,9 @@ export function usuario_Guio(){
         headers:{
             'Content-type':'application/json'//tipo de formato que manejara el post
         },
-        body:JSON.stringify({puntaje:10})//contenido del json con clave y valor, se define con un puntaje de 10
+        body:JSON.stringify({puntaje:10,
+        categoria:1,
+        IdJuego:1})//contenido del json con clave y valor, se define con un puntaje de 10
     })
         .then(response => response.text())//la respuesta es de tipo texto
         .then(data =>{
