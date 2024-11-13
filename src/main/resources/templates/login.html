@@ -39,7 +39,7 @@
                         Invalido usuario o contraseña
                     </div>
                     <!--Es necesario que los campos de usuario y contraseña tengan esos nombres, así los maneja Spring -->
-                    <input type="text" name="username" th:field="*{username}" placeholder="usuario" class="Users" >
+                    <input type="text" name="username" th:field="*{username}" placeholder="Usuario" class="Users" >
                     <span class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}" ></span>
                     <input type="password" name="password" th:field="*{password}" placeholder="Contraseña" class="Users" >
                     <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" ></span>

@@ -91,7 +91,8 @@ public class ControllerPlataforma {
     //envio de información al js estadistica
     @GetMapping("/estadistica/informacion")
     @ResponseBody//etiqueta para identificar el json
-    public Map<String, Object> informacionEstadistica() {
+    //como retorna una lista por eso el tipo
+    public List<Map<String, Object>> informacionEstadistica() {
         return servicesPuntajeActividades.datosEstadisticas(identificador);
     }
 }

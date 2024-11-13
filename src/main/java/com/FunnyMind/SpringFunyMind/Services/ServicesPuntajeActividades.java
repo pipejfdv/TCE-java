@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ServicesPuntajeActividades {
@@ -28,36 +25,48 @@ public class ServicesPuntajeActividades {
         return repositoryPuntajeActividades.findAll();
     }
 
-    public Map<String, Object> datosEstadisticas(int identificador) {
-        Optional<PuntajeActividades> puntaje = repositoryPuntajeActividades.findById_usuario(identificador);
-        Map<String, Object> respuesta = new HashMap<>();
+    public List<Map<String, Object>> datosEstadisticas(int identificador) {
+        // Buscar todos los puntajes asociados al usuario se almacena en una lista de para que retorne varios datos en el json
+        List<PuntajeActividades> puntajes = repositoryPuntajeActividades.findById_usuario(identificador);
+        //como se necesita almacenar varios datos se agrega dentro de una list
+        List<Map<String, Object>> respuestaList = new ArrayList<>();
+//"puntaje" variable iteradora de la lista de pntaje por usuario
+        for (PuntajeActividades puntaje : puntajes) {
+            //Lista de clave valor
+            Map<String, Object> respuesta = new HashMap<>();
 
-        if (puntaje.isPresent()) {
-            Optional<Juegos> nombreJuego = repositoryJuegos.findByIdJuego(puntaje.get().getId_juego());
+            // Obtener el nombre del juego de acuerdo al id, se escoge opcional por lo que tiene datos de diferente y solo un tipo de dato
+            //al manejar el "Optional" es necesario manejar excepción o sino saca error
+            Optional<Juegos> nombreJuego = repositoryJuegos.findByIdJuego(puntaje.getId_juego());
 
-            respuesta.put("puntajeJuego", puntaje.get().getPuntaje_juego());
-            respuesta.put("puntajeCategoria", puntaje.get().getPuntaje_categoria());
+            // Agregar el puntaje del juego y de la categoría al mapa de respuesta
+            respuesta.put("puntajeJuego", puntaje.getPuntaje_juego());
+            respuesta.put("puntajeCategoria", puntaje.getPuntaje_categoria());
 
+            // Si el juego existe, agregamos su nombre y categoría
             if (nombreJuego.isPresent()) {
-                Optional<CategoriaJuegos> categoriaJuegos = repositoryCategoriaJuegos.findByIdCategoriJuego(puntaje.get().getId_categoria());
+                // Obtener la categoria del juego de acuerdo al id, se escoge opcional por lo que tiene datos de diferente y solo un tipo de dato
+                Optional<CategoriaJuegos> categoriaJuegos = repositoryCategoriaJuegos.findByIdCategoriJuego(puntaje.getId_categoria());
+                //se obtiene el nombre del juego y se agrega al mapa de respuesta
                 respuesta.put("nombreJuego", nombreJuego.get().getNombre());
+                //si esta presenta la categoria se agregara
                 if (categoriaJuegos.isPresent()) {
-                    respuesta.put("nombreCategori", categoriaJuegos.get().getCategoria());
-                }
-                else {
-                    respuesta.put("nombreCategori", "");
+                    //se toma el nombre y se agrega al map
+                    respuesta.put("nombreCategoria", categoriaJuegos.get().getCategoria());
+                } else {
+                    respuesta.put("nombreCategoria", ""); // Si la categoría no existe
                 }
             } else {
-                respuesta.put("nombreJuego", "Juego no encontrado"); // o algún valor por defecto
+                respuesta.put("nombreJuego", "Juego no encontrado"); // Valor por defecto si el juego no existe
             }
-        } else {
-            respuesta.put("puntajeJuego", 0);
-            respuesta.put("puntajeCategoria", 0); // o algún valor por defecto para la categoría
-            respuesta.put("nombreJuego", "Usuario no encontrado"); // o algún valor por defecto
+
+            // Agregar el mapa de respuesta individual a la lista de respuestas
+            respuestaList.add(respuesta);
         }
 
-        return respuesta;
+        return respuestaList;
     }
+
 
 
 
