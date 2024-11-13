@@ -36,7 +36,7 @@
                 </section>
                 <section>
                     <div class="contenedorEstadistica" style="display: none">
-                        <div th:include="plantillas/interfazContenidoPaciente :: estadistica"></div>
+                        <a class="btn btn-danger" th:href="@{/v1/Plataforma/estadistica/{id}(id=${datosUsuario.id_usuario})}">Recargar</a>
                     </div>
                 </section>
             </div>

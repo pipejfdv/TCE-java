@@ -1,11 +1,16 @@
 package com.FunnyMind.SpringFunyMind.Services;
 
+import com.FunnyMind.SpringFunyMind.Entitys.CategoriaJuegos;
+import com.FunnyMind.SpringFunyMind.Entitys.Juegos;
 import com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades;
+import com.FunnyMind.SpringFunyMind.Repository.RepositoryCategoriaJuegos;
+import com.FunnyMind.SpringFunyMind.Repository.RepositoryJuegos;
 import com.FunnyMind.SpringFunyMind.Repository.RepositoryPuntajeActividades;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -14,18 +19,47 @@ import java.util.Optional;
 public class ServicesPuntajeActividades {
     @Autowired
     private RepositoryPuntajeActividades repositoryPuntajeActividades;
+    @Autowired
+    private RepositoryJuegos repositoryJuegos;
+    @Autowired
+    private RepositoryCategoriaJuegos repositoryCategoriaJuegos;
 
     public List<com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades> listaPuntajeActividades(){
         return repositoryPuntajeActividades.findAll();
     }
 
-    public Optional<com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades> puntajeActividadesUsuario(int idUsuario){
-        return repositoryPuntajeActividades.findByIdUsuario(idUsuario);
+    public Map<String, Object> datosEstadisticas(int identificador) {
+        Optional<PuntajeActividades> puntaje = repositoryPuntajeActividades.findById_usuario(identificador);
+        Map<String, Object> respuesta = new HashMap<>();
+
+        if (puntaje.isPresent()) {
+            Optional<Juegos> nombreJuego = repositoryJuegos.findByIdJuego(puntaje.get().getId_juego());
+
+            respuesta.put("puntajeJuego", puntaje.get().getPuntaje_juego());
+            respuesta.put("puntajeCategoria", puntaje.get().getPuntaje_categoria());
+
+            if (nombreJuego.isPresent()) {
+                Optional<CategoriaJuegos> categoriaJuegos = repositoryCategoriaJuegos.findByIdCategoriJuego(puntaje.get().getId_categoria());
+                respuesta.put("nombreJuego", nombreJuego.get().getNombre());
+                if (categoriaJuegos.isPresent()) {
+                    respuesta.put("nombreCategori", categoriaJuegos.get().getCategoria());
+                }
+                else {
+                    respuesta.put("nombreCategori", "");
+                }
+            } else {
+                respuesta.put("nombreJuego", "Juego no encontrado"); // o algún valor por defecto
+            }
+        } else {
+            respuesta.put("puntajeJuego", 0);
+            respuesta.put("puntajeCategoria", 0); // o algún valor por defecto para la categoría
+            respuesta.put("nombreJuego", "Usuario no encontrado"); // o algún valor por defecto
+        }
+
+        return respuesta;
     }
 
-    public void actualizarPuntaje (com.FunnyMind.SpringFunyMind.Entitys.PuntajeActividades puntajeActividades){
-        repositoryPuntajeActividades.save(puntajeActividades);
-    }
+
 
     //clasificación de juegos con su respectivo puntaje y categoria
     //"datos" - registro de datos del JSON que envia cada juego
@@ -40,12 +74,12 @@ public class ServicesPuntajeActividades {
         //fecha actual
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         //lista objetos de la entidada "PuntajeActividades" buscando por ID del jugador y el juego
-        Optional<PuntajeActividades> registroExistente = repositoryPuntajeActividades.findByIdUsuarioAndIdJuego(identificador, Idjuego);
+        Optional<PuntajeActividades> registroExistente = repositoryPuntajeActividades.findById_usuarioAndIdJuego(identificador, Idjuego);
         //condición que evalua el registro del usuario y ese juego existe
         if(registroExistente.isPresent()){
             //del registro existente se crea el objeto "registroPuntaje" de la entidad "PuntajeActividades"
             PuntajeActividades registroPuntaje = registroExistente.get();
-            if (registroPuntaje.getIdCategoria() == categoria){
+            if (registroPuntaje.getId_categoria() == categoria){
                 // Actualizar el puntaje del juego y de la categoría
                 registroPuntaje.setPuntaje_juego(registroPuntaje.getPuntaje_juego() + puntaje);
                 registroPuntaje.setPuntaje_categoria(registroPuntaje.getPuntaje_categoria() + puntaje);
@@ -55,7 +89,7 @@ public class ServicesPuntajeActividades {
         }
         // Si no hay un registro para este juego específico pero la categoría es la misma
         else {
-            Optional<PuntajeActividades> registroCategoriaExistente = repositoryPuntajeActividades.findByIdUsuarioAndIdCategoria(identificador, categoria);
+            Optional<PuntajeActividades> registroCategoriaExistente = repositoryPuntajeActividades.findById_usuarioAndId_Categoria(identificador, categoria);
             if(registroCategoriaExistente.isPresent()){
                 PuntajeActividades puntajeCategoriaExistente = registroCategoriaExistente.get();
                 // Crear un nuevo registro para el nuevo juego, sumando el puntaje en la categoría existente

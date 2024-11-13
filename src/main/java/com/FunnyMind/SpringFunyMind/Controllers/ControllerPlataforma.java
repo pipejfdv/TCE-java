@@ -4,6 +4,7 @@ import com.FunnyMind.SpringFunyMind.ApiTerapeutaNews.ApiMediastack;
 import com.FunnyMind.SpringFunyMind.Entitys.ApiResponseNews;
 import com.FunnyMind.SpringFunyMind.Entitys.Usuarios;
 import com.FunnyMind.SpringFunyMind.Services.ServicesGeneros;
+import com.FunnyMind.SpringFunyMind.Services.ServicesPuntajeActividades;
 import com.FunnyMind.SpringFunyMind.Services.ServicesUsuario;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -29,6 +31,10 @@ public class ControllerPlataforma {
     private ServicesUsuario servicesUsuario;
     @Autowired
     private ServicesGeneros servicesGeneros;
+    @Autowired
+    private ServicesPuntajeActividades servicesPuntajeActividades;
+
+    int identificador;
     //traer datos del usuario al home
     @GetMapping("/home")
     @PreAuthorize("hasAuthority('PACIENTE') or hasAuthority('USUARIO')")
@@ -73,5 +79,19 @@ public class ControllerPlataforma {
         }
         servicesUsuario.crearActualizarUsuario(usuarios);
         return "interfazUsuarios/usuarios";
+    }
+    //identificar el usuario
+    @GetMapping("/estadistica/{id}")
+    @PreAuthorize("hasAuthority('PACIENTE') or hasAuthority('TERAPEUTA')")
+    public String estadistica(@PathVariable int id) {
+        identificador = id;
+        return "estadistica";
+    }
+
+    //envio de información al js estadistica
+    @GetMapping("/estadistica/informacion")
+    @ResponseBody//etiqueta para identificar el json
+    public Map<String, Object> informacionEstadistica() {
+        return servicesPuntajeActividades.datosEstadisticas(identificador);
     }
 }
