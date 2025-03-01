@@ -20,7 +20,7 @@ public class ApiMediastack {
     //link de api "https://mediastack.com/documentation"
     public List<ApiResponseNews> apiMediastackNoticias (){
         //Datos para la consulta
-        String APIKEY= "8490e69717d0b171cb3ae177c0217007";
+        String APIKEY= "8490e69717d0b171cb3ae177c0217007";/*8490e69717d0b171cb3ae177c0217007*/
         String baseUrl = "https://api.mediastack.com/v1/news";
 
         //creación de consulta

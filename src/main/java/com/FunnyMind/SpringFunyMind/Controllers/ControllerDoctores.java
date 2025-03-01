@@ -2,6 +2,7 @@ package com.FunnyMind.SpringFunyMind.Controllers;
 
 import com.FunnyMind.SpringFunyMind.ApiTerapeutaNews.ApiMediastack;
 import com.FunnyMind.SpringFunyMind.Entitys.ApiResponseNews;
+import com.FunnyMind.SpringFunyMind.Services.ServicesUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,12 +17,15 @@ import java.util.List;
 public class ControllerDoctores {
     @Autowired
     private ApiMediastack apiMediastack;
+    @Autowired
+    private ServicesUsuario servicesUsuario;
 
     @GetMapping("/home")
     @PreAuthorize("hasAuthority('TERAPEUTA')")
     public String homeDoctor(Model model) {
         List<ApiResponseNews> listaNoticias = apiMediastack.apiMediastackNoticias();
         model.addAttribute("listaNoticias", listaNoticias);
+        model.addAttribute("listaUsuarios", servicesUsuario.listarUsuarios());
         return "interfazDoctores/doctores";
     }
 

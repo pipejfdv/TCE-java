@@ -8,7 +8,7 @@
 
 <div class="cotainer" th:fragment="inicioTerapeuta">
   <div class="content" style="background: rgba(246, 247, 251, 0.63); border-radius: 15px;">
-      <h1 class="m-2">Articulos de tu interés</h1>
+      <h1 class="mt-2 mb-2 d-flex justify-content-center">Articulos de tu interés</h1>
 
         <div id="carouselExampleCaptions" class="carousel slide full-width-carousel m-2">
             <div class="carousel-inner">
@@ -40,8 +40,34 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-
+      <table class="table table-info table-striped table-hover table-responsive">
+          <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">P. nombre</th>
+              <th scope="col">S. nombre</th>
+              <th scope="col">P. apellido</th>
+              <th scope="col">S. apellido</th>
+              <th scope="col">Año nacimiento</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Correo</th>
+              <th scope="col">Opciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="user, iterador : ${listaUsuarios}">
+              <th scope="row" th:text="${iterador.index + 1}">1</th>
+              <td th:text="${user.primer_nombre}"></td>
+              <td th:text="${user.segundo_nombre}"></td>
+              <td th:text="${user.primer_apellido}"></td>
+              <td th:text="${user.segundo_apellido}"></td>
+              <td th:text="${user.fecha_nacimiento}"></td>
+              <td th:text="${user.getAge()}"></td>
+              <td th:text="${user.correo}"></td>
+              <td th:text="${user.correo}"></td>
+          </tr>
+          </tbody>
+      </table>
 
   </div>
 </div>

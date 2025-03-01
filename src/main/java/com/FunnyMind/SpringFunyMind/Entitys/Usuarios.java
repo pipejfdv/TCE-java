@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.Period;
 
 //evita métodos get & set
 @Data
@@ -48,4 +49,9 @@ public class Usuarios {
     private int id_especialidad = 1;
     @NotBlank
     private String username;
+
+    //determinar la edad del usuario
+    public int getAge(){
+        return Period.between(fecha_nacimiento, LocalDate.now()).getYears();
+    }
 }
